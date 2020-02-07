@@ -1,0 +1,3 @@
+[submodule "JASPAR-profile-inference"]
+	path = JASPAR-profile-inference
+	url = https://github.com/wassermanlab/JASPAR-profile-inference.git
