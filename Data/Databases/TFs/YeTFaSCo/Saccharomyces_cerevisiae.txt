@@ -1,286 +1,355 @@
-YAL051W
-YBL003C
-YBL005W
-YBL008W
-YBL021C
-YBL052C
-YBL054W
-YBL103C
-YBR033W
-YBR049C
-YBR060C
-YBR066C
-YBR083W
-YBR089C-A
-YBR150C
-YBR182C
-YBR239C
-YBR240C
-YBR267W
-YBR297W
-YCL055W
-YCL058C
-YCL067C
-YCR018C
-YCR033W
-YCR039C
-YCR040W
-YCR065W
-YCR066W
-YCR096C
-YCR106W
-YDL002C
-YDL020C
-YDL042C
-YDL048C
-YDL056W
-YDL074C
-YDL106C
-YDL166C
-YDL170W
-YDR009W
-YDR026C
-YDR034C
-YDR043C
-YDR049W
-YDR081C
-YDR096W
-YDR123C
-YDR146C
-YDR169C
-YDR174W
-YDR207C
-YDR213W
-YDR216W
-YDR225W
-YDR227W
-YDR253C
-YDR259C
-YDR266C
-YDR277C
-YDR303C
-YDR310C
-YDR323C
-YDR362C
-YDR409W
-YDR421W
-YDR423C
-YDR448W
-YDR451C
-YDR463W
-YDR477W
-YDR485C
-YDR520C
-YEL009C
-YER028C
-YER040W
-YER045C
-YER051W
-YER063W
-YER064C
-YER068W
-YER069W
-YER088C
-YER109C
-YER111C
-YER130C
-YER148W
-YER159C
-YER161C
-YER164W
-YER169W
-YER184C
-YFL021W
-YFL031W
-YFL044C
-YFL052W
-YFR034C
-YFR037C
-YGL013C
-YGL035C
-YGL071W
-YGL073W
-YGL096W
-YGL131C
-YGL133W
-YGL162W
-YGL166W
-YGL181W
-YGL192W
-YGL197W
-YGL209W
-YGL237C
-YGL254W
-YGR002C
-YGR040W
-YGR044C
-YGR067C
-YGR071C
-YGR089W
-YGR097W
-YGR140W
-YGR249W
-YGR288W
-YHL009C
-YHL020C
-YHL027W
-YHR006W
-YHR056C
-YHR084W
-YHR124W
-YHR178W
-YHR206W
-YIL036W
-YIL056W
-YIL101C
-YIL119C
-YIL122W
-YIL128W
-YIL130W
-YIL131C
-YIR013C
-YIR017C
-YIR018W
-YIR023W
-YJL056C
-YJL089W
-YJL103C
-YJL110C
-YJL127C
-YJL176C
-YJL206C
-YJR060W
-YJR094C
-YJR127C
-YJR140C
-YJR147W
-YKL005C
-YKL015W
-YKL020C
-YKL032C
-YKL038W
-YKL043W
-YKL062W
-YKL072W
-YKL109W
-YKL112W
-YKL185W
-YKL222C
-YKR034W
-YKR064W
-YKR099W
-YKR101W
-YLL054C
-YLR013W
-YLR014C
-YLR098C
-YLR113W
-YLR131C
-YLR176C
-YLR182W
-YLR211C
-YLR223C
-YLR228C
-YLR254C
-YLR256W
-YLR266C
-YLR278C
-YLR375W
-YLR403W
-YLR442C
-YLR451W
-YML007W
-YML027W
-YML051W
-YML065W
-YML076C
-YML081W
-YML099C
-YML113W
-YMR016C
-YMR019W
-YMR021C
-YMR037C
-YMR042W
-YMR043W
-YMR053C
-YMR070W
-YMR072W
-YMR075W
-YMR164C
-YMR168C
-YMR172W
-YMR176W
-YMR182C
-YMR213W
-YMR280C
-YNL023C
-YNL027W
-YNL039W
-YNL068C
-YNL079C
-YNL103W
-YNL132W
-YNL139C
-YNL167C
-YNL199C
-YNL216W
-YNL227C
-YNL257C
-YNL309W
-YNL314W
-YNR054C
-YNR063W
-YOL028C
-YOL067C
-YOL089C
-YOL108C
-YOL116W
-YOR028C
-YOR032C
-YOR038C
-YOR077W
-YOR113W
-YOR140W
-YOR156C
-YOR162C
-YOR172W
-YOR229W
-YOR230W
-YOR290C
-YOR298C-A
-YOR304W
-YOR308C
-YOR337W
-YOR344C
-YOR358W
-YOR363C
-YOR372C
-YOR380W
-YPL016W
-YPL021W
-YPL038W
-YPL049C
-YPL075W
-YPL089C
-YPL128C
-YPL133C
-YPL139C
-YPL177C
-YPL202C
-YPL216W
-YPL230W
-YPL248C
-YPR008W
-YPR009W
-YPR013C
-YPR015C
-YPR022C
-YPR052C
-YPR054W
-YPR065W
-YPR086W
-YPR104C
-YPR186C
-YPR196W
-YPR199C
+;"Systematic Name";"Gene Name";"Motif ID";"Expert Confidence";"Dubious?";"Notes"
+;"YPR199C";"ARR1";"603";"Medium";"";"Only motif 603 has significant scores with ChIP-chip and expression data; looks somewhat like a YAP motif"
+;"YPR196W";"";"861";"High";"";"Motifs from PBMs are very similar and are a variant monomeric GAL4-like motif.  Chose 861 as it passes the significance threshold against ChIP-chip data."
+;"YPR186C";"PZF1";"1321";"Low";"";"This is a single literature site.  The protein almost certainly binds the site but it has not been demonstrated that this is an optimal binding site."
+;"YPR104C";"FHL1";"1504";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YPR104C";"FHL1";"1196";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YPR104C";"FHL1";"2203";"High";"";"ChIP-chip motifs are all Rap1. PBMs identify a different motif which also corresponds to ChIP-chip data. Selected 2203 as it scores highest on ChIP-chip and expression data."
+;"YPR104C";"FHL1";"893";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YPR104C";"FHL1";"1618";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YPR104C";"FHL1";"629";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YPR104C";"FHL1";"406";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YPR086W";"SUA7";"1327";"Low";"Dubious";"This protein is not expected to bind DNA; it is supposed to bind DNA-bound TBP.  The TIRF-PBM data used to generate the motif included only 96 sequences."
+;"YPR065W";"ROX1";"1396";"High";"";"About half the motifs have a typical ACAAT Sox core.  MITOMI motif 1396 has highest correspondence to both ChIP-chip and deletion expression data."
+;"YPR054W";"SMK1";"1875";"Low";"Dubious";"I could not find any evidence that this protein binds directly to DNA.  There is only one motif derived from ChIP-chip but it bears little relationship to the data from which it was derived."
+;"YPR052C";"NHP6A";"879";"Medium";"";"NHP6A and NHP6B are similar to the HMGB family, which is thought to lack sequence specificity.  However, the proteins do bend the DNA when they bind, and so may have some level of sequence specificity.  Essentially similar motifs were obtained for the two different proteins (in the same study) and the PBM motif for Nhp6A has a good correspondence to ChIP-chip data.  Give both Medium confidence."
+;"YPR022C";"";"588";"High";"";"Only one motif available, from PBMs; classical yeast C2H2 motif, and has some relationship to ChIP-chip data."
+;"YPR015C";"";"871";"High";"";"Only one motif available, from PBMs; resembles motof from CMR3 which is a paralogous gene (and nearly adjacent on the chromosome).  And, scores significantly against expression data."
+;"YPR013C";"CMR3";"859";"High";"";"PBM motifs are very similar. No other supporting data, but it\'s a clean motif. Chose 859 because it most closely resembles motif from paralog YPR015c."
+;"YPR009W";"SUT2";"2236";"High";"";"Highest-scoring motif (PBM) is a classical GAL4-type monomeric motif and is very significant in ChIP-chip"
+;"YPR008W";"HAA1";"1425";"Medium";"";"Literature motif is not completely determined, but scores highly on ChIP-chip data.  Regardless, medium confidence."
+;"YPL248C";"GAL4";"2206";"High";"";"ChIP-chip motif 1510 resembles literature motif, and PBM motif 875, but scores highly on ChIP and expression data, across the board.  Note, however, that the high ChIP-chip scores stem from an experiment with high negative correlation.   PBM motif 2206 appears to be a monomeric version, socres even higher on ChIP-chip and expression."
+;"YPL248C";"GAL4";"1510";"High";"";"ChIP-chip motif 1510 resembles literature motif, and PBM motif 875, but scores highly on ChIP and expression data, across the board.  Note, however, that the high ChIP-chip scores stem from an experiment with high negative correlation.   PBM motif 2206 appears to be a monomeric version, socres even higher on ChIP-chip and expression."
+;"YPL230W";"USV1";"509";"High";"";"Two PBM studies essentially agree on classical C2H2 GGGG-containing motif.  Chose 509 because it scores much higher on both ChIP and expression data."
+;"YPL216W";"";"0";"";"Dubious";"Unlikely to be true TF."
+;"YPL202C";"AFT2";"389";"High";"";"All motifs look similar.  ChIP-chip motif 389 scores high on ChIP-chip data and also best on expression data."
+;"YPL177C";"CUP9";"2121";"High";"";"MITOMI and PBM motifs are similar. PBM motif 2121 has slightly lower correspondence to ChIP data, but more significant correspondence to expression data."
+;"YPL139C";"UME1";"1143";"Low";"Dubious";"It is not clear that this is a sequence-specific DNA-binding protein; it contains no DNA-binding domain and has no known in vitro sequence specificity.  The motif comes only from ChIP-chip.  But, it has a high P-value, and the motif has low similarity to other motifs, with the possible exception of Yox1.  But the function of the protein is very different from that of Yox1.  Tough call - leave as Dubious, but give Low confidence to motif 1143."
+;"YPL133C";"RDS2";"757";"Medium";"";"All motifs contain CGG. PBM motif 2226 appears to be a monomeric version of literature motif 757. However, the paper that produced motif 757 did not demonstrate that this is an optimal binding site. Retain both motifs and give them a \"medium\" confidence."
+;"YPL133C";"RDS2";"2226";"Medium";"";"All motifs contain CGG. PBM motif 2226 appears to be a monomeric version of literature motif 757. However, the paper that produced motif 757 did not demonstrate that this is an optimal binding site. Retain both motifs and give them a \"medium\" confidence."
+;"YPL128C";"TBF1";"2178";"High";"";"All motifs, obtained by three different means, are all very similar, although there is no ChIP or expression support for any of them. Went with 2178, which is the BEEML output."
+;"YPL089C";"RLM1";"419";"Medium";"";"Motif 419 has a MADS-like appearance, and scores very highly in ChIP-chip data, despite being derived from the literature.  Not much correspondence to expression however, hence Medium confidence.  ChIP-chip motif 910 does slightly better on expression but to me is not a credible MADS box binding site."
+;"YPL089C";"RLM1";"1079";"Incorrect";"";"Likely represents Mcm1 binding site."
+;"YPL075W";"GCR1";"2071";"High";"";"Gcr2 is not a DNA-binding protein.  SGD:  \"Gcr1p is a DNA-binding protein interacting with the consensus sequence CTTCC, whereas Gcr2p interacts with Gcr1p\".  But, ChIP-chip motif 606 is probably the best Gcr1 motif available (even though it came from Gcr2 ChIP)."
+;"YPL049C";"DIG1";"0";"";"Dubious";"Not a TF - it binds Ste12; all the motifs are Ste12 motifs."
+;"YPL038W";"MET31";"1370";"High";"";"Most motifs look similar.  MITOMI motif 1370 has highest overall correlation to ChIP-chip, OE, and deletion data."
+;"YPL021W";"ECM23";"578";"High";"";"PBM motif 578 strongly resembles that from other yeast GATA-class TFs"
+;"YPL016W";"SWI1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YOR380W";"RDR1";"756";"Medium";"";"All motifs are related except 1851. PBM motif 2158 is monomeric and has highest correspondence to ChIP-chip data. The literature motif 756 consists of two back-to-back and slightly overlapping versions of the monomeric PBM motif. There is no evidence for direct binding in this specific spacing and orientation; however, the results of mutations in reporters indicate that both copies are necessary for induction in the mutant. Retain both motifs."
+;"YOR380W";"RDR1";"2158";"High";"";"All motifs are related except 1851. PBM motif 2158 is monomeric and has highest correspondence to ChIP-chip data. The literature motif 756 consists of two back-to-back and slightly overlapping versions of the monomeric PBM motif. There is no evidence for direct binding in this specific spacing and orientation; however, the results of mutations in reporters indicate that both copies are necessary for induction in the mutant. Retain both motifs."
+;"YOR372C";"NDD1";"0";"";"Dubious";"There is no evidence that this is a sequence-specific DNA-binding protein, either in vitro or in vivo or in its sequence.  The ChIP-chip motif that scores most highly is actually an MCM1 motif, which is consistent with the role of NDD1 as a \"transcriptional activator essential for nuclear division\"."
+;"YOR372C";"NDD1";"366";"Incorrect";"";"Likely represents Mcm1 binding site."
+;"YOR363C";"PIP2";"0";"";"";"See Oaf1-Pip2-dimer"
+;"YOR358W";"HAP5";"695";"High";"";"Subunit of the heme-activated, glucose-repressed Hap2/3/4/5 CCAAT-binding complex - there should be a single motif for all four proteins, containing CCAAT.  ChIP-chip motif 695 resembles CCAATCA, and scores highly on ChIP-chip, OE, and deletion expression data."
+;"YOR344C";"TYE7";"397";"High";"";"All studies except one get canonical HLH motif.  795 (PBM) is nearly tied for best ChIP-chip score with the best ChIP-chip motif. Still, ChIP motif 397 scores higher, and looks identical, but with fewer flanking empty positions."
+;"YOR337W";"TEA1";"817";"Medium";"";"Three motifs, all from PBMs. Choose 817 because it has a more robust GAL4 \"CGG\" core. But there is no convincing corroborating data for either motif and they do not match each other."
+;"YOR308C";"SNU66";"0";"";"Dubious";"Unlikely to be true TF."
+;"YOR304W";"ISW2";"0";"";"Dubious";"Unlikely to be true TF."
+;"YOR298C-A";"MBF1";"0";"";"Dubious";"This is a coactivator.  I found no evidence that it is a sequence-specific TF."
+;"YOR290C";"SNF2";"0";"";"Dubious";"Unlikely to be true TF."
+;"YOR230W";"WTM1";"1148";"Low";"Dubious";"It is not clear that this is a sequence-specific DNA-binding protein; it contains no DNA-binding domain and has no known in vitro sequence specificity.  The motifs come only from ChIP-chip so scoring on ChIP-chip is circular."
+;"YOR229W";"WTM2";"0";"";"Dubious";"It is not clear that this is a sequence-specific DNA-binding protein; it contains no DNA-binding domain and has no known in vitro sequence specificity.  The motif comes only from ChIP-chip so scoring on ChIP-chip is circular."
+;"YOR172W";"YRM1";"813";"High";"";"Two PBM studies largely agree on classic GAL4-class monomeric motif.  Motif 813 has indications of spacing and orientation of dimeric protein."
+;"YOR162C";"YRR1";"2245";"High";"";"Classic monomeric GAL4-class motif. PBM studies agree and score significantly on Harbison data. No other motifs have spacing/orientation except 11909958, but even the authors of this study note that \"Only half a dyad seems to be conserved in this consensus sequence\". 2245 scores highest in Harbison data."
+;"YOR156C";"NFI1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YOR140W";"SFL1";"605";"Medium";"";"None of the motifs are highly related to each other.  But, most share a GAAG core and are otherwise A-rich.  The PBM motif 839 in particular is compatible with the putative binding sites that are mutated in PMID 17594096, and it scores well on ChIP-chip.  Other motifs may represent different multimerization configurations.  ChIP-chip motif 605 also scores well on ChIP-chip data, which is circular, but I will retain it for completeness."
+;"YOR140W";"SFL1";"839";"Medium";"";"None of the motifs are highly related to each other.  But, most share a GAAG core and are otherwise A-rich.  The PBM motif 839 in particular is compatible with the putative binding sites that are mutated in PMID 17594096, and it scores well on ChIP-chip.  Other motifs may represent different multimerization configurations.  ChIP-chip motif 605 also scores well on ChIP-chip data, which is circular, but I will retain it for completeness."
+;"YOR113W";"AZF1";"499";"High";"";"PBM motif 499 scores as well as the ChIP-chip motifs, but without the circularity.  No significant data except ChIP-chip, however."
+;"YOR077W";"RTS2";"0";"";"Dubious";"Homolog of Kin17; not a typical C2H2 zinc finger.  Believed to be \"chromatin-associated proteins involved in UV response and DNA replication\".  No evidence for sequence-specific DNA-binding.  Single ChIP-chip motif does not have strong correspondence to the data from which it is derived."
+;"YOR038C";"HIR2";"0";"";"Dubious";"Hir1,2,3 are a nucleosome assembly complex, not TFs"
+;"YOR032C";"HMS1";"1498";"Medium";"";"Motif 1498 scores reasonably on ChIP.  Other corroborating data are not that convincing - medium confidence."
+;"YOR028C";"CIN5";"1349";"Medium";"";"Most motifs match the classic YAP motif.  This is the best in vitro motif (highest match to ChIP-chip) and it is different from the ChIP-based motifs - might reflect homo vs. heterodimer?"
+;"YOR028C";"CIN5";"409";"High";"";"Most motifs match the classic YAP motif.  This is the best in vivo motif (highest match to ChIP-chip)."
+;"YOL116W";"MSN1";"1378";"High";"";"MITOMI motif 1376 has the highest correspondence to ChIP-chip.  MITOMI motif 1378 is very close, however, and seems to be a circular permutation.  Retain both motifs."
+;"YOL116W";"MSN1";"1376";"High";"";"MITOMI motif 1376 has the highest correspondence to ChIP-chip.  MITOMI motif 1378 is very close, however, and seems to be a circular permutation.  Retain both motifs."
+;"YOL108C";"INO4";"713";"High";"";"Ino2/4 binds as a heterodimer, so there should just be one motif for the two proteins.  All motifs appear similar but none of them is derived from in vitro data.  Nonetheless most motifs match a classic E-box with some preference for flanking bases.  Motif 713 is derived from ChIP-chip; it is not the highest-scoring ChIP-chip motif but it is highest for OE and deletion expression."
+;"YOL089C";"HAL9";"2134";"High";"";"PBM motifs 799 and 2134 score highest on ChIP-chip data; classic dimeric and monomeric GAL4 sites, respectively."
+;"YOL089C";"HAL9";"799";"High";"";"PBM motifs 799 and 2134 score highest on ChIP-chip data; classic dimeric and monomeric GAL4 sites, respectively."
+;"YOL067C";"RTG1";"1493";"Low";"";"1493 and 1494 are a toss-up and could represent different dimerization partners, conceivably.  Similar to 1445 and 1446 above.  Retain both but give low confidence."
+;"YOL067C";"RTG1";"1494";"Low";"";"1493 and 1494 are a toss-up and could represent different dimerization partners, conceivably.  Similar to 1445 and 1446 above.  Retain both but give low confidence."
+;"YOL028C";"YAP7";"1737";"High";"";"7-base bZIP core.  Obtained in ChIP-chip studies and higher correspondence to stressed ChIP-chip data.  Possible heterodimer?  Little literature on this protein.  1737 chosen because it is largely symmetric and has highest score for both stressed and unstressed Harbison data, also, higher GO score"
+;"YOL028C";"YAP7";"1414";"High";"";"8-base bZIP core. Obtained by Mitomi, so this is a homodimer.  Higher correspondence to unstressed ChIP-chip data.  Little literature on this protein.  1414 chosen for higher ChIP-chip overall scores; plus, it is a palindrome as expected for a bZIP protein."
+;"YNR063W";"";"804";"High";"";"Motifs from PBMs are virtually identical.  This is a monomeric GAL4-like motif.  804 agrees more with ChIP-chip data."
+;"YNR054C";"ESF2";"0";"";"Dubious";"This is supposed to be a ribosome biogenesis factor.  I found no evidence that it is a sequence-specific DNA-binding protein."
+;"YNL314W";"DAL82";"690";"High";"";"PBM and ChIP-chip motifs agree; select ChIP-chip as it scores higher on ChIP-chip although the extra A\'s on the side could be either due to the FL protein or some other in vivo factor."
+;"YNL309W";"STB1";"0";"";"Dubious";"No direct evidence that this is a DNA-binding protein.  It binds Swi6 and the ChIP motifs all resemble Swi4 binding sites."
+;"YNL257C";"SIP3";"0";"";"Dubious";"Sip3 is a protein that \"transcription through interaction with DNA-bound Snf1p\" (SGD); no DNA-binding domain and no evidence for direct interaction with DNA or intrinsic sequence specificity."
+;"YNL227C";"JJJ1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YNL216W";"RAP1";"254";"High";"";"Most motifs look similar.  ChIP-chip motif 254 has highest correspondence to expression data."
+;"YNL199C";"GCR2";"0";"";"Dubious";"Gcr2 is not a DNA-binding protein.  SGD:  \"Gcr1p is a DNA-binding protein interacting with the consensus sequence CTTCC, whereas Gcr2p interacts with Gcr1p\".  But, ChIP-chip motif 606 is probably the best Gcr1 motif available (even though it came from Gcr2 ChIP)."
+;"YNL167C";"SKO1";"1401";"High";"";"The MITOMI motif 1401 is an offset and asymmetric version of the traditional consensus (TGACGTCA) but has a higher ChIP-chip and expression correspondence than the motifs that are more symmetric."
+;"YNL139C";"THO2";"786";"Low";"Dubious";"It is not clear that this is a sequence-specific DNA-binding protein; it contains no DNA-binding domain and has no known in vitro sequence specificity.  The motif comes only from ChIP-chip."
+;"YNL132W";"KRE33";"0";"";"Dubious";"This is supposed to be a ribosome biogenesis factor.  I found no evidence that it is a sequence-specific DNA-binding protein."
+;"YNL103W";"MET4";"0";"";"";"My understanding is that Met4 is a modifier of the specificity of other proteins.  SGD states that it \"requires different combinations of the auxiliary factors Cbf1p, Met28p, Met31p and Met32p\".  ChIP-chip motifs 1023 and 1024 I believe are cofactor motifs; they are E-boxes.  ChIP-chip motif 689 is different and matches Met28 and Met32 motifs.  (CTGTGG core).  Met28 is a bZIP protein, and Met32 is a C2H2.  MITOMI motif for Met32 is TGTGG.  So this is the Met32 motif.  I do not believe that any of the Met4 motifs is correct.  Need to obtain motifs for complexes."
+;"YNL079C";"TPM1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YNL068C";"FKH2";"830";"High";"";"Most motifs are classic Forkhead.  PBM motif 830 is one of the highest scoring and is not circular."
+;"YNL039W";"BDP1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YNL027W";"CRZ1";"516";"High";"";"PBM motif 516 scores highest on ChIP and expression; resembles classic literature motifs"
+;"YNL023C";"FAP1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YMR280C";"CAT8";"33";"Medium";"";"Near-classic dimeric GAL4 motif.  Literature-based.  Not clear this is an optimal site but it does bind.  Seems to hit the right GO category."
+;"YMR213W";"CEF1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YMR182C";"RGM1";"531";"High";"";"PBM motif 531 looks like a C2H2 motif (row of G\'s), and scores well on both ChIP-chip and deletion expression data."
+;"YMR176W";"ECM5";"0";"";"Dubious";"Unlikely to be true TF."
+;"YMR172W";"HOT1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YMR168C";"CEP3";"524";"High";"";"Two PBM motifs agree.  Went with 524 because it appears neater.  No other supporting data for any of them."
+;"YMR164C";"MSS11";"204";"Low";"Dubious";"There is no evidence that this is a sequence-specific DNA-binding protein, rather than a cofactor.  The motif has a limited relationship to ChIP-chip data.  The literature motif scores better than the motif derived from the ChIP-chip study.  Also, the motif is identical to that for FLO8."
+;"YMR075W";"RCO1";"1066";"Low";"Dubious";"There is no evidence that this is a sequence-specific DNA-binding protein rather than a chromatin factor.  The higher-scoring ChIP-chip motif appears to have low information content and does not display strong correspondence to the data it was generated from or to expression data."
+;"YMR072W";"ABF2";"541";"Medium";"Dubious";"Protein is not expected to be sequence specific.  But motif is obtained in vitro.  May need further investigation.  Give medium confidence, but label as dubious."
+;"YMR070W";"MOT3";"2080";"Medium";"";"PBM motif 2080 is very similar to the literature motif and scores highest on expression data.  Moreover, this motif explains high-scoring ChIP-chip motifs for many other TFs, e.g. Nrg1, Yap6, Sok2"
+;"YMR053C";"STB2";"710";"Low";"Dubious";"No direct evidence that this is a DNA-binding protein.  Three ChIP-derived motifs but none scores highly by any measure.  Motif 710 is an arbitrary choice - looks tidy."
+;"YMR053C";"STB2";"710";"Incorrect";"";"Likely represents Reb1 binding site."
+;"YMR043W";"MCM1";"831";"High";"";"Most motifs resemble a classic SRF site.  PBM motif 831 scores highly across the board, except for expression data where none does well, and its scores are non-circular."
+;"YMR042W";"ARG80";"1483";"Medium";"";"Motif 1482 is an Arg81 site.  1483, however, is similar to Mcm1.  Choose this, give Medium confidence."
+;"YMR037C";"MSN2";"1380";"High";"";"MITOMI motif 1380 has the highest overall correspondence to ChIP-chip, overexpression, and deletion data.  Resembles classic Msn2/4 motif."
+;"YMR021C";"MAC1";"1540";"High";"";"Literature motif 1540 most closely most closely corresponds to ChIP-chip data (albeit barely significant).  Nothing else to gauge by, but no reason to doubt literature motif."
+;"YMR019W";"STB4";"2107";"High";"";"PBM motif 2107 is clearly a dimeric GAL4-class motif, and it blows all the other motifs out of the water."
+;"YMR016C";"SOK2";"404";"High";"";"ChIP-chip motif 404 has highest correspondence to both ChIP-chip and expression data - and strongly resembles PBM motif"
+;"YML113W";"DAT1";"1416";"Medium";"";"The literature (e.g. PMID: 8532535) suggests that the sequence specificity may be more promiscuous than the name suggests.  To my knowledge there has not been any SELEX or PBM demonstrating that any motif is correct.  But, it does bear some relationship to ChIP-chip and expression data."
+;"YML099C";"ARG81";"1507";"Incorrect";"";"Likely represents Mcm1 binding site."
+;"YML099C";"ARG81";"1506";"High";"";"ChIP motif 1506 correlates well with ChIP and also with expression data.  Resembles dimeric GAL4 class motif."
+;"YML081W";"";"2194";"High";"";"PBM motifs are a classical C2H2 motif that match each other and have some correspondence to ChIP-chip data. 2194 has highest correspondence to ChIP chip."
+;"YML076C";"WAR1";"325";"Low";"";"None of the motifs are convincing, but at least sequences with the literature motif have been experimentally confirmed to bind the protein (even if it is not shown that this is the optimal binding site)"
+;"YML065W";"ORC1";"1549";"High";"";"Looks like ORC1 motif.  Which is not really a TF, but it is a sequence-specific DNA-binding protein."
+;"YML051W";"GAL80";"0";"";"Dubious";"Gal80 is not a sequence-specific DNA-binding protein"
+;"YML027W";"YOX1";"498";"High";"";"Two PBM studies and Pramila et al. (PMID 12464633) agree on classic homeodomain TAATTA motif.  All three correlate with expression change and OE.  Motif 453 is not a direct measurement so choose PBM motif that is the same length as the typical homeodomain footprint - 498 also correlates best with OE data; expression scores are skewed low by the large number of cell-cycle measurements."
+;"YML007W";"YAP1";"2186";"High";"";"PBM motif 2186 looks like a monomeric bZIP site but it has the highest scores on both ChIP and expression"
+;"YLR451W";"LEU3";"2135";"High";"";"Most motifs look similar - dimeric GAL4 motif. Literature motif (781) has high correspondence to ChIP-chip and expression data and is not circular.  But, PBM motif 2135, which is a monomeric GAL4 motif, scores highest on both ChIP-chip and expression data."
+;"YLR451W";"LEU3";"781";"High";"";"Most motifs look similar - dimeric GAL4 motif. Literature motif (781) has high correspondence to ChIP-chip and expression data and is not circular.  But, PBM motif 2135, which is a monomeric GAL4 motif, scores highest on both ChIP-chip and expression data."
+;"YLR442C";"SIR3";"0";"";"Dubious";"There is no evidence that the SIR proteins are sequence-specific DNA-binding proteins.  Most of the motifs for them are Rap1 sites."
+;"YLR403W";"SFP1";"621";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YLR403W";"SFP1";"1710";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YLR403W";"SFP1";"357";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YLR403W";"SFP1";"1100";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YLR403W";"SFP1";"797";"High";"";"Most ChIP-seq studies identified the Rap1 motif.  PBM motif 797 is less significant by ChIP-seq (although still highly significant) but is the winner across the board for all types of expression data."
+;"YLR375W";"STP3";"568";"Medium";"";"STP3 and 4 have very similar DNA-binding domains.  However, they are not similar to those of STP1 and 2; the next most closely related are SWI5 and ACE2, with major differences in the recognition alpha helices.  All of the STP4 motifs are different from each other and none have any supporting data.  There is only one motif for STP3 (568) from PBM and it matches the STP4 motif from the same study (559) which is the basis for choosing these two motifs."
+;"YLR278C";"";"2112";"High";"";"Only 2112 (from PBMs) stands out; dimeric GAL4 motif with high score on ChIP-chip."
+;"YLR266C";"PDR8";"528";"Medium";"";"Both motifs are equally credible but have very limited support.  Literature motif is related to that of YRR1 literature motif.  PBM motif, however, is a classic GAL4 monomer.  This is the PBM motif."
+;"YLR266C";"PDR8";"244";"Medium";"";"Both motifs are equally credible but have very limited support.  Literature motif is related to that of YRR1 literature motif.  PBM motif, however, is a classic GAL4 monomer.  This is the literature motif."
+;"YLR256W";"HAP1";"2078";"High";"";"Literature binding site is direct CGG repeats with a 6bp spacer (PMID: 7958882). PBM motif 2078 gets this; it scores highest overall, including significant scores on both ChIP-chip and expression."
+;"YLR254C";"NDL1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YLR228C";"ECM22";"849";"High";"";"PBM motif 2122 is a monomeric GAL4 class motif, and scores highest on both ChIP and expression ata.  849 is a classic dimeric GAL4 motif with lower but still reasonable scores and is moderately predictive across the board. "
+;"YLR228C";"ECM22";"2122";"High";"";"PBM motif 2122 is a monomeric GAL4 class motif, and scores highest on both ChIP and expression ata.  849 is a classic dimeric GAL4 motif with lower but still reasonable scores and is moderately predictive across the board. "
+;"YLR223C";"IFH1";"0";"";"Dubious";"Cofactor of Fhl1p.  No evidence for sequence-specific DNA-binding.  "
+;"YLR211C";"";"0";"";"Dubious";"Unlikely to be true TF."
+;"YLR182W";"SWI6";"0";"";"Dubious";"Swi6 is a cofactor, not a DNA-binding protein.  These motifs are for Mbp1 or Swi4."
+;"YLR176C";"RFX1";"1478";"Medium";"";"Curious case - virtually all motifs are similar in appearance, with a common TGGCAAC core.  They range from what appear to be monomers to full dimers, with multiple partial forms.  However, none of them scores highly on both ChIP-chip and expression data.  Select two representatives:  one that scores well on ChIP-chip, and one that scores well on expression.  This is the one that scores most highly on ChIP-chip.  It is a dimer motif.  Give medium confidence, since it has little relationship to expression data."
+;"YLR176C";"RFX1";"496";"Medium";"";"Curious case - virtually all motifs are similar in appearance, with a common TGGCAAC core.  They range from what appear to be monomers to full dimers, with multiple partial forms.  However, none of them scores highly on both ChIP-chip and expression data.  Select two representatives:  one that scores well on ChIP-chip, and one that scores well on expression.  This is the one that scores most highly on expression (close 2nd on deletion and 1st on overexpression).  It is the only purely monomeric motif.  Give medium confidence, since according to the literature this protein should bind as a dimer."
+;"YLR131C";"ACE2";"1332";"High";"";"Highest-scoring ChIP-chip motif is Rap1 site.  MITOMI motif 1332 is next, and resembles the classic Swi5/Ace2 motif."
+;"YLR131C";"ACE2";"918";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YLR113W";"HOG1";"0";"";"Dubious";"This is a signalling molecule that associates with many TFs (see SGD)"
+;"YLR098C";"CHA4";"1607";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YLR098C";"CHA4";"2120";"High";"";"Two PBM motifs agree, and PBM motif 2120 has highest correspondence to ChIP-chip data, even highter than the best ChIP-chip motif. Has a GAL4-like appearance, albeit a variant. Monomeric. (Highest scoring motif - 1607 - is actually a Rap1 motif)."
+;"YLR014C";"PPR1";"2064";"Low";"";"ChIP-chip motif 2064 almost matches the literature site, which has been confirmed by directed experimentation, and scores highest on most measures.  But, give it low confidence - it is not at all clear that this is an optimal binding site, and none of the scores for any of the motifs are all that high."
+;"YLR013W";"GAT3";"2128";"High";"";"All PBM motifs look similar, also similar to a subset of other GATAs. 2128 scores quite highly on ChIP-chip (albeit with negative correlation!), and also higher on expression and OE data."
+;"YLL054C";"";"526";"Medium";"";"Three motifs available, from PBMs; two dimeric GAL4-like motifs but with different spacings and one monomeric. No backup data but looks tidy. Keep all three."
+;"YLL054C";"";"816";"Medium";"";"Three motifs available, from PBMs; two dimeric GAL4-like motifs but with different spacings and one monomeric. No backup data but looks tidy. Keep all three."
+;"YLL054C";"";"2242";"Medium";"";"Three motifs available, from PBMs; two dimeric GAL4-like motifs but with different spacings and one monomeric. No backup data but looks tidy. Keep all three."
+;"YKR101W";"SIR1";"0";"";"Dubious";"There is no evidence that the SIR proteins are sequence-specific DNA-binding proteins.  Most of the motifs for them are Rap1 sites."
+;"YKR099W";"BAS1";"402";"High";"";"Virtually all motifs are similar, with GAGTCA core.  ChIP motif 402 has highest correspondence to both ChIP-chip and expression data."
+;"YKR064W";"OAF3";"0";"";"";"I do not see how either of these motifs could possibly be a Gal4-class binding motif.  And, there is no correspondence to any of the data, even the ChIP-chip data from which it is derived."
+;"YKR034W";"DAL80";"1355";"Medium";"";"MITOMI motif 1355 has highest correspondence to ChIP-chip.  But it\'s not striking..none of them are, despite the fact that this is a classic GATA site (GATAAG)."
+;"YKL222C";"";"2192";"High";"";"Two motifs from PBMs resemble monomeric GAL4-like motif. 2192 agrees best with ChIP-chip data and expression data."
+;"YKL185W";"ASH1";"648";"Incorrect";"";"Likely represents Mcm1 binding site."
+;"YKL185W";"ASH1";"28";"Medium";"";"The literature motif may not represent the full binding activity of the protein.  Also, it is not supported by ChIP-chip.  ChIP-chip identifies Mcm1-like motifs.  But, it does score highly in both ChIP-chip and expression.  The only higher-scoring motif has almost no information content.  "
+;"YKL185W";"ASH1";"932";"Incorrect";"";"Likely represents Mcm1 binding site."
+;"YKL112W";"ABF1";"1993";"High";"";"Most motifs are similar, and five have pegged the ChIP P-value. Choose 791- it\'s the highest scoring overall, and is from PBMs"
+;"YKL109W";"HAP4";"695";"High";"";"Subunit of the heme-activated, glucose-repressed Hap2/3/4/5 CCAAT-binding complex - there should be a single motif for all four proteins, containing CCAAT.  ChIP-chip motif 695 resembles CCAATCA, and scores highly on ChIP-chip, OE, and deletion expression data."
+;"YKL072W";"STB6";"0";"";"Dubious";"It is not clear that this is a sequence-specific DNA-binding protein; it contains no DNA-binding domain and has no known in vitro sequence specificity.  The motif comes only from ChIP-chip so scoring on ChIP-chip is circular.  The ChIP-chip motif looks a little like a Rap1 motif."
+;"YKL062W";"MSN4";"518";"High";"";"PBM motif 518 resembles both the classical MSN motif and the PBM motif, and scores highest on both expression and ChIP-chip."
+;"YKL043W";"PHD1";"393";"High";"";"High-scoring motifs are all similar, with characteristic APSES GC core and palindromic. PBM motifs score highest on ChIP-seq data, while ChIP-chip motif 393 (which contains flanking G/C residues) scores highest on expression data. Retain both - possibly, the rest of the protein contributes to binding flanking residues. This is the ChIP motif that scores highest on expression data."
+;"YKL043W";"PHD1";"2153";"High";"";"High-scoring motifs are all similar, with characteristic APSES GC core and palindromic. PBM motifs score highest on ChIP-seq data, while ChIP-chip motif 393 (which contains flanking G/C residues) scores highest on expression data. Retain both - possibly, the rest of the protein contributes to binding flanking residues. This is the higher-scoring PBM motif (2153)."
+;"YKL038W";"RGT1";"2227";"High";"";"PBM motif 2227 is very similar to \"traditional\" motif and to monomeric GAL4 motifs, and scores highest on ChIP-chip data. All PBM motifs are similar."
+;"YKL032C";"IXR1";"0";"";"Dubious";"Binds cisplatin-modified DNA.  HMG domains.  ChIP-chip motifs not significant.  Dubious and no credible motif."
+;"YKL020C";"SPT23";"670";"Low";"Dubious";"I could not find any evidence that this protein binds directly to DNA.  It has an IPT domain but no REL domain.  None of the ChIP-derived motifs scores highly on ChIP data or anything else.  Motif 670 bears some relationship to expression data."
+;"YKL015W";"PUT3";"2065";"Medium";"";"Motifs vary considerably. ChIP motif 2065 is a dimeric/(trimeric?) GAL4-like site, and has the highest correspondence to ChIP-chip data (from which it is derived) and some correspondence to expression data (although it is not strong). PBM motif 2223 is a monomeric GAL4-like motif and has higher correspondence to expression data, albeit weaker (but still good) correspondence to ChIP-chip data.  It is possible that the actual sequence preference is some other arrangement of monomeric sites that were not picked up in either assay - score as medium confidence."
+;"YKL015W";"PUT3";"2223";"Medium";"";"Motifs vary considerably. ChIP motif 2065 is a dimeric/(trimeric?) GAL4-like site, and has the highest correspondence to ChIP-chip data (from which it is derived) and some correspondence to expression data (although it is not strong). PBM motif 2223 is a monomeric GAL4-like motif and has higher correspondence to expression data, albeit weaker (but still good) correspondence to ChIP-chip data.  It is possible that the actual sequence preference is some other arrangement of monomeric sites that were not picked up in either assay - score as medium confidence."
+;"YKL005C";"BYE1";"0";"";"Dubious";"SGD:  \"Negative regulator of transcription elongation, contains a TFIIS-like domain and a PHD finger, multicopy suppressor of temperature-sensitive ess1 mutations, probably binds RNA polymerase II large subunit\".  No evidence this is a sequence-specific TF."
+;"YJR147W";"HMS2";"992";"Low";"";"The one ChIP-chip motif bears little relationship to the ChIP data.it kind of looks like an HNF-like site, but still, low confidence."
+;"YJR140C";"HIR3";"0";"";"Dubious";"Hir1,2,3 are a nucleosome assembly complex, not TFs"
+;"YJR127C";"RSF2";"575";"High";"";"No supporting data, but the PBM motif 575 looks like a typical yeast C2H2 motif (Adr1, which has similar zinc fingers, Mig1, etc)."
+;"YJR094C";"IME1";"0";"";"Dubious";"Interacts with UME6.  The only significant motif shares 5/6 bases with the UME6 motif core (GCCGCC)"
+;"YJR060W";"CBF1";"1346";"High";"";"Classic E-box. MITOMI motif 1346 nearly has highest correspondence to ChIP-chip data and is non-circular; no other supporting data"
+;"YJL206C";"";"0";"";"";"Seven motifs from ChIP-chip, but none of them corresponds well to ChIP-chip data, and none of them resembles a GAL4 motif. 1169 has a CGG in the middle, but too much flanking information to be credible without further independent support."
+;"YJL176C";"SWI3";"0";"";"Dubious";"Unlikely to be true TF."
+;"YJL127C";"SPT10";"1880";"Low";"";"This is the protein that binds histone promoters.  The sequence specificity is derived from the histone promoters only so the literature motif may be inaccurate.  Motif 1880 has higher scores overall but does not resemble the literature motif.  Uncertain what to do here - use 1880, but give low confidence.  Motif learned in vivo could contain extrinsic information."
+;"YJL110C";"GZF3";"2133";"High";"";"Classic GATA motif 2133 from PBM scores highest on ChIP-chip and expression data"
+;"YJL103C";"GSM1";"856";"Medium";"";"Only PBM motif 856 reaches significance, on expression.  Classic GAL4-type monomeric site.  No other data, relation to expression not strong.  Medium confidence."
+;"YJL089W";"SIP4";"2067";"Medium";"";"PBM motif 573 is a monomeric GAL4-type motif (others appear dimeric) but it has good correspondence to ChIP-chip data.  Only a few of the dimeric sites are more significant - the motif from in vivo analysis (PMID: 14685767) does not score as highly as 2067 from ChIP-chip data, but they look very similar.  This is 2067, the presumed dimeric site."
+;"YJL089W";"SIP4";"573";"Medium";"";"PBM motif 573 is a monomeric GAL4-type motif (others appear dimeric) but it has good correspondence to ChIP-chip data.  Only a few of the dimeric sites are more significant - the motif from in vivo analysis (PMID: 14685767) does not score as highly as 2067 from ChIP-chip data, but they look very similar.  This is 573, the presumed monomeric site"
+;"YJL056C";"ZAP1";"2097";"High";"";"Most motifs are similar but do not exceed confidence thresholds on any data type. PBM motif 2097 has highest score for ChIP and expression, and is not circular"
+;"YIR023W";"DAL81";"53";"Low";"";"None of the motifs agree with each other.  The literature motif characterization was indirect; hence low confidence that this is the true motif.  The ChIP-chip motifs score higher on ChIP data but that\'s circular."
+;"YIR018W";"YAP5";"896";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YIR018W";"YAP5";"777";"High";"";"ChIP-chip yields a classic 7-mer Yap motif that scores well on ChIP and significantly on expression."
+;"YIR017C";"MET28";"0";"";"";"Like MET4, component of a complex.  SGD:  \"Basic leucine zipper (bZIP) transcriptional activator in the Cbf1p-Met4p-Met28p complex\"..\"Both Met4p and Met28p bind to DNA only in the presence of Cbf1p, and the presence of Cbf1p and Met4p stimulates the binding of Met28p to DNA (1, 2).\".  ChIP-chip motif 703 (CTGTGG) is clearly the Met31/32 motif.  The other ChIP-chip motif is essentially poly-A, and scores poorly.  Hence, neither of these motifs represents the intrinsic sequence specificity of MET28.  Need in vitro data for complexes."
+;"YIR013C";"GAT4";"565";"High";"";"Two PBM motifs look similar, also similar to a subset of other GATAs.  565 scores higher on expression and OE data."
+;"YIL131C";"FKH1";"2002";"High";"";"Classic Forkhead motif for most of them.  2002 strongly resembles PBM motif but scores higher on both ChIP (which is circular) and expression (which is not)."
+;"YIL130W";"ASG1";"2116";"Medium";"";"Two PBM motifs appear to represent monomeric and dimeric versions of the same motif. This is the monomeric version. No other supporting data; hence medium confidence.  Picked 2116 because it has a higher GO score and expression score."
+;"YIL130W";"ASG1";"807";"Medium";"";"Two PBM motifs appear to represent monomeric and dimeric versions of the same motif. This is the dimeric version. No other supporting data; hence medium confidence."
+;"YIL128W";"MET18";"0";"";"Dubious";"I found no evidence that this is a sequence-specific DNA-binding protein.  ChIP-chip motif does not correlate with ChIP-chip data, or anything else."
+;"YIL122W";"POG1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YIL119C";"RPI1";"0";"";"Dubious";"It is not clear that this is a sequence-specific DNA-binding protein; it contains no DNA-binding domain and has no known in vitro sequence specificity.  The motif comes only from ChIP-chip so scoring on ChIP-chip is circular."
+;"YIL101C";"XBP1";"2039";"High";"";"PBM and in vitro selection-derived motifs have highest scores across the board.  842 is higher on GO, but only slightly in AUC, and it has a very large number of empty flanking bases.  2039 (in vitro selection) seems a reasonable compromise - it\'s highest on ChIP and almost the highest on expression."
+;"YIL056W";"VHR1";"2091";"Medium";"";"PBM motif has high score on GO because it looks a lot like Gcn4"
+;"YIL036W";"CST6";"585";"High";"";"PBM motif 585 correlates with expression data (deletion and overexpression).  ChIP motif 1466 has higher ChIP score but is lower on expression."
+;"YHR206W";"SKN7";"583";"High";"";"Motifs are remarkably discordant considering that they all resemble each other in being G+C rich and containing a GGCC core.  Possibly reflecting different modes of multimerization?  Include the two that score highest on independent data:  PBM motif 583, which represents a monomer, and ChIP-chip motif 380, which appears to represent a dimer."
+;"YHR206W";"SKN7";"380";"High";"";"Motifs are remarkably discordant considering that they all resemble each other in being G+C rich and containing a GGCC core.  Possibly reflecting different modes of multimerization?  Include the two that score highest on independent data:  PBM motif 583, which represents a monomer, and ChIP-chip motif 380, which appears to represent a dimer."
+;"YHR178W";"STB5";"1405";"High";"";"All motifs have CGG core and most have CGGnG.  Most ChIP-derived motifs have no relationship to expression data.  Mitomi motif 1405 and PBM motif 514 score decently on both ChIP-chip and expression data, and seem to nail the GO category (oxidative stress response), and look like classic Gal4 halfmers.  MITOMI motif scores slighly higher overall.  This is presumably the monomeric motif"
+;"YHR178W";"STB5";"2068";"Medium";"";"All motifs have CGG core and most have CGGnG.  Most ChIP-derived motifs have no relationship to expression data.  Motif 2068 scores highest overall; looks a bit unusual for a Gal4 class motif but also does well on expression data.  Retain as potential dimer motif, although it may also incorporate extrinsic information."
+;"YHR124W";"NDT80";"1464";"High";"";"Motif 1464 matches literature motifs and PBM motif, and nails sporulation on GO.  It also has the highest correspondence to ChIP-chip data."
+;"YHR084W";"STE12";"400";"High";"";"All motifs but one resemble the canonical literature site.  Motif 400 is derived from ChIP-chip data (on which it scores highest) but also scores highest on expression data."
+;"YHR056C";"RSC30";"2164";"Medium";"";"Arbitrary choice - all PBM motifs look similar (and resemble motif from homolog Rsc3).  I have downgraded this one from high to medium because the best scoring motif actually looks the least like the Rsc3 motif."
+;"YHR006W";"STP2";"2174";"High";"";"STP1 and 2 have very similar DNA-binding domains. However, they are not similar to those of STP3 and 4. PBM motif for STP2 (2174) correlates highest with ChIP-chip and expression data. ChIP-chip motif for STP1 (660) most strongly resembles motif 800, and scores highly on ChIP-chip data. In addition, these motifs resemble halfmers of literature-derived binding sites."
+;"YHL027W";"RIM101";"600";"High";"";"ChIP-chip motif 600 is almost identical to PBM motif 513, but scores slightly higher on expression data.  Three of six motifs are very similar."
+;"YHL020C";"OPI1";"0";"";"Dubious";"Motifs do not match and do not explain the ChIP-chip data from which they are derived.  Motif 1049 resembles the expected UAS-INO (Ino2/4) binding site (CATGTGAAAT) - Opi1 acts as a repressor by binding Ino2.  I believe this protein is a corepressor, and Ino2/4 are the DNA-binding factors.  Dubious as sequence-specific TF."
+;"YHL009C";"YAP3";"1411";"High";"";"Mitomi yields a nearly palindromic 8-mer motif with strong similarity to that of Yap6.  PBM motif is similar but appears to be partial."
+;"YHL009C";"YAP3";"672";"High";"";"ChIP-chip yields a classic 7-mer Yap motif that scores well on ChIP and significantly on expression.  Could be a heterodimer.  Chose 672 over 1463 because it has a higher score on expression data, which is independent."
+;"YGR288W";"MAL13";"0";"";"";"None of the ChIP-chip motifs correspond wekk to the data they come from and/or resemble a GAL4 motif."
+;"YGR249W";"MGA1";"2141";"Medium";"";"PBM motif 2141 is similar to Hsf1 motif 476 (TTCCA). Has TTC \"core\" which is shared by most Hsf1 motifs. Scores reasonably on ChIP data but no other supporting information;  hence \"medium\"."
+;"YGR140W";"CBF2";"0";"";"Dubious";"Unlikely to be true TF."
+;"YGR097W";"ASK10";"0";"";"Dubious";"I did not find any evidence that this is a sequence-specific DNA-binding protein."
+;"YGR089W";"NNF2";"0";"";"Dubious";"I did not find any evidence that this is a sequence-specific DNA-binding protein."
+;"YGR071C";"";"0";"";"Dubious";"Unlikely to be true TF."
+;"YGR067C";"";"2191";"High";"";"PBM motif is a classical C2H2 motif that has good correspondence to ChIP-chip data. 2191 corresponds best and has fewer empty columns in the PWM."
+;"YGR044C";"RME1";"273";"Low";"";"Motif 273 shows similarity to RME response elements (RREs), GTACC(T/A)ACAAAA (in fact it is derived from them).  The fact that RME has three C2H2 zinc fingers and also requires an additional C-terminal region for binding in vitro, together with its relatively large footprint, are consistent with such a large binding site.  However, I gave this motif a \"low\" score as there is no systematic analysis in vivo or in vitro indicating that these are really the most preferred sites.  It would be valuable to redo the in vitro and in vivo experiments under appropriate conditions."
+;"YGR040W";"KSS1";"0";"";"Dubious";"There is no evidence that Kss1 is a sequence-specific TF."
+;"YGR002C";"SWC4";"0";"";"Dubious";"Unlikely to be true TF."
+;"YGL254W";"FZF1";"69";"Low";"";"Literature motif is the only one that appears credible.  PBM motif I believe is a known artifact.  Literature motif gets low confidence however as it is based on a single known binding sequence."
+;"YGL237C";"HAP2";"695";"High";"";"Subunit of the heme-activated, glucose-repressed Hap2/3/4/5 CCAAT-binding complex - there should be a single motif for all four proteins, containing CCAAT.  ChIP-chip motif 695 resembles CCAATCA, and scores highly on ChIP-chip, OE, and deletion expression data."
+;"YGL209W";"MIG2";"2143";"High";"";"PBM motif 2143 has highest correspondence to ChIP-chip data"
+;"YGL197W";"MDS3";"0";"";"Dubious";"I found no evidence that this is a sequence-specific DNA-binding protein.  ChIP-chip motif does not correlate with ChIP-chip data, or anything else."
+;"YGL192W";"IME4";"1000";"Low";"Dubious";"I could not find evidence that IME4 is a sequence-specific DNA-binding protein.  C3H1 is more typically an RNA-binding domain or something besides nucleic acid binding.  There is one significant ChIP-chip motif but perhaps it binds through a cofactor.  No other supporting data."
+;"YGL181W";"GTS1";"694";"Low";"";"None of the three motifs resembles an AT-hook binding site.  Only one correlates with the ChIP-chip data, but that\'s circular.  Low confidence."
+;"YGL166W";"CUP2";"48";"Medium";"";"Three motifs account for three possible spacings in the literature motif; it is not clear that this is the optimal site, however"
+;"YGL162W";"SUT1";"673";"Medium";"";"Four motifs, all derived from ChIP-chip, contain CGG, but are unusual, with degeneracy and a core of CGGGG.  Correlate somewhat with both OE and deletion data, however.  "
+;"YGL133W";"ITC1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YGL131C";"SNT2";"612";"Low";"Dubious";"All three motifs are derived from the same ChIP-chip data.  However, there is no corroborating data, and not all SANT domains are DNA-binding - or are non-specific, in chromatin proteins. So it could be a cofactor motif; in fact it is similar to motifs of Stp3 and Stp4.  The protein has other chromatin-related domains (BAH, PHD/RING).  Hence the \"Low\" assessment."
+;"YGL096W";"TOS8";"494";"High";"";"No corroborating data on this TF, and only one PBM motif known and one ChIP motif.  But, it resembles TGTCA, which was also obtained for paralog Cup9 by multiple approaches (GTGNCA), as well as PBM results for the Meis/Mrg/Pknox/Tgif family, which are the closest mammalian homologs.  The ChIP motif (1902) does not resemble a homeodomain binding sequence, and scores lower on expression data."
+;"YGL073W";"HSF1";"411";"Medium";"";"Four types of motifs contain TTC monomeric core and all score highly on both ChIP and expression.  Appear to represent different monomeric/multimeric binding configurations.  This is the spaced direct repeat dimeric site.  From ChIP."
+;"YGL073W";"HSF1";"1461";"Medium";"";"Four types of motifs contain TTC monomeric core and all score highly on both ChIP and expression.  Appear to represent different monomeric/multimeric binding configurations.  This is the dimeric head-to-tail site.  From ChIP and prior."
+;"YGL073W";"HSF1";"615";"Medium";"";"Four types of motifs contain TTC monomeric core and all score highly on both ChIP and expression.  Appear to represent different monomeric/multimeric binding configurations.  This is the trimeric site.  From ChIP."
+;"YGL073W";"HSF1";"476";"Medium";"";"Four types of motifs contain TTC monomeric core and all score highly on both ChIP and expression.  Appear to represent different monomeric/multimeric binding configurations.  This is the monomeric site.  From PBM."
+;"YGL071W";"AFT1";"658";"High";"";"Most motifs are similar.  Also very similar to AFT2 motifs.  ChIP-chip motif 658 scores highest on both ChIP-chip and expression data."
+;"YGL035C";"MIG1";"2142";"High";"";"PBM motif 2142 has highest correspondence to ChIP-chip AND AUC for GO category \"generation of precursor metabolites and energy\".  The adjacent A/T stretch, which is also noted in the literature, is found in ChIP-chip motif 654 and others; however, that motif does not sort as well for GO category \"generation of precursor metabolites and energy\" and also scores lower for both ChIP and expression, so it seems unlikely to represent a key intrinsic activity of the protein itself."
+;"YGL013C";"PDR1";"485";"High";"";"PBM motif 485 looks like a traditional literature motif and has highest correspondence to ChIP and expression data.  Dimeric GAL4 motif."
+;"YGL013C";"PDR1";"899";"Incorrect";"";"Likely represents Rap1 binding site."
+;"YFR037C";"RSC8";"0";"";"Dubious";"Unlikely to be true TF."
+;"YFR034C";"PHO4";"2222";"High";"";"Almost all motifs match classic HLH E-box. PBM motif 2222 has highest match to both ChIP-chip and expression data, without being circular."
+;"YFL052W";"";"0";"";"Dubious";"Putative zinc-cluster protein."
+;"YFL044C";"OTU1";"1166";"Low";"";"ChIP-chip motif 1166 has a good relationship to ChIP-chip data, but it is unusual for C2H2 motifs to be A/T rich, and there is no other support for this motif, so it could be a cofactor, nucleosome-excluding, TATA element, etc.  In addition, it only has a single C2H2 domain, and is known to function as a deubiquitylation enzyme.  Low confidence."
+;"YFL031W";"HAC1";"94";"Medium";"";"1788 is the overall winner.  But, literature motif 94 also scores well in ChIP-chip, despite being somewhat different.  Possible difference in heterodimerazation partners, or proteolytic fragment?  Retain both. "
+;"YFL031W";"HAC1";"1788";"High";"";"1788 is the overall winner.  But, literature motif 94 also scores well in ChIP-chip, despite being somewhat different.  Possible difference in heterodimerization partners, or proteolytic fragment?  Retain both, score 94 as medium."
+;"YFL021W";"GAT1";"962";"High";"";"ChIP-chip motif 962 scores higher on both ChIP-chip and expression data"
+;"YER184C";"";"2095";"Medium";"";"One motif from PBMs is a monomeric GAL4-like motif and the other is dimeric. Medium confidence because there is little independent support, and both contain the CCGG core that I believe may be an artifact. However, both score significantly on ChIP-chip data.  Only 512 is significant on expression data."
+;"YER184C";"";"512";"Medium";"";"One motif from PBMs is a monomeric GAL4-like motif and the other is dimeric. Medium confidence because there is little independent support, and both contain the CCGG core that I believe may be an artifact. However, both score significantly on ChIP-chip data.  Only 512 is significant on expression data."
+;"YER169W";"RPH1";"547";"High";"";"About half of the motifs look similar to each other, with GGGG core typical of many yeast C2H2 proteins.  PBM motif 547 has meaningful scores on both ChIP-chip and mutant expression data.  I\'m somewhat concerned that motif 279 lacks two A residues captured by both PBM experiments."
+;"YER164W";"CHD1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YER161C";"SPT2";"1114";"Low";"Dubious";"I could not find any evidence that this protein binds directly to DNA.  None of the motifs is significant.  All are from ChIP-chip.  Motif 1114 chosen simploy because it has the highest numbers overall."
+;"YER159C";"BUR6";"0";"";"Dubious";"Unlikely to be true TF."
+;"YER148W";"SPT15";"798";"High";"";"This is TATA-binding protein.  PBM motif 798 chosen because 1326 was derived from the 96-sequence TIRF-PBM array instead of a full 40K PBM"
+;"YER130C";"COM2";"534";"High";"";"PBM motif 534 has the highest correspondence to expression data.  Not much else supporting any of the motifs, although the two PBM motifs look about the same.  Also look like typical yeast C2H2 motifs."
+;"YER111C";"SWI4";"584";"High";"";"Motif is well-characterized and most published motifs match the expected one.  PBM motif (584) scores highly (although not highest) in Chip-chip data.  It is, however, non-circular, and specifically captures \"DNA metabolic process\" in GO analysis."
+;"YER109C";"FLO8";"67";"Low";"Dubious";"I found no evidence that this is a sequence-specific DNA-binding protein, i.e. that it binds directly to DNA in vitro.  The motif has a limited relationship to ChIP-chip data.  The literature motif scores better than the motif derived from the ChIP-chip study.  Also, the motif is identical to that for MSS11."
+;"YER088C";"DOT6";"2221";"High";"";"PBM motif 812 most closely resembles that of homolog TOD6, which is well-supported; has highest correlation to both ChIP and expression data."
+;"YER069W";"ARG5,6";"1426";"Medium";"";"Not clear that motif is optimal."
+;"YER068W";"MOT2";"556";"Medium";"";"PBM motif 556 has high correspondence to ChIP-chip data.  However, also resembles TATA element, and could also be a structural motif.  RRMs normally bind single-stranded RNA or DNA.  Give medium confidence."
+;"YER064C";"";"2094";"Medium";"";"PBM motif has high score on GO because it looks a lot like Gcn4"
+;"YER063W";"THO1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YER051W";"JHD1";"662";"Low";"Dubious";"This is a histone demethylase.  No evidence for direct DNA binding.  Motif 662 is significant.  Include, but give low confidence - could be a cofactor."
+;"YER045C";"ACA1";"8";"Medium";"";"Literature motif 8 is supported by experimental investigation, and resembles a bZIP site, but has no other support; motif was not obtained objectively.  Can bind as heterodimer.  The highest-scoring motif (from ChIP, 1457) has low information content - I\'m concerned it is learning other features of bound promoters."
+;"YER040W";"GLN3";"539";"High";"";"Most motifs are classic GATA or GATAAG.  PBM motif 539 scores highest on ChIP."
+;"YER028C";"MIG3";"2144";"High";"";"PBM motif 2144 has highest correspondence to ChIP-chip data"
+;"YEL009C";"GCN4";"1363";"High";"";"Virtually all motifs look the same. MITOMI motif 1363 is as good as any of the ChIP-chip motifs but not circular; scores high across the board."
+;"YDR520C";"URC2";"553";"High";"";"This is a monomeric GAL4-class motif.  Two PBM studies essentially agree, and have some relationship to ChIP-chip data.  No other informative data."
+;"YDR485C";"VPS72";"0";"";"Dubious";"Unlikely to be true TF."
+;"YDR477W";"SNF1";"1110";"Medium";"Dubious";"Motif 1110 has a quite strong correspondence to ChIP-chip data (from which it is derived).  However, there seems to be no evidence that this is a sequence-specific DNA-binding protein.  Aside from a weak relationship to expression data there is no corroborating evidence here (and no DNA-binding domain)."
+;"YDR463W";"STP1";"660";"High";"";"STP1 and 2 have very similar DNA-binding domains.  However, they are not similar to those of STP3 and 4.  PBM motif for STP2 (800) correlates with ChIP-chip and expression data.  ChIP-chip motif for STP1 (660) most strongly resembles motif 800, and scores highly on ChIP-chip data.  In addition, these motifs resemble halfmers of literature-derived binding sites."
+;"YDR451C";"YHP1";"716";"High";"";"ChIP-chip, EMSA, and one-hybrid all arrive at a classic homeodomain TAATTG motif. Microarray enrichment motif (716) scores higher on OE data from another study than ChIP motifs do, and does nearly as well on ChIP data."
+;"YDR448W";"ADA2";"0";"";"Dubious";"Unlikely to be true TF."
+;"YDR423C";"CAD1";"2098";"High";"";"Classic YAP motif in most cases.  Include examples of both overlapping and adjacent monomeric sites - there are examples of both in PBM data and they both score highly on ChIP data.  This one is adjacent."
+;"YDR423C";"CAD1";"2073";"High";"";"Classic YAP motif in most cases.  Include examples of both overlapping and adjacent monomeric sites - there are examples of both in PBM data and they both score highly on ChIP data.  This one is overlapping."
+;"YDR421W";"ARO80";"725";"High";"";"PBM motif 2115 appears monomeric and has highest correspondence to ChIP-chip data. ChIP motif 1509 appears dimeric and correlates with ChIP data. Literature motif 725 appears trimeric and has experimental support. Retain all three."
+;"YDR421W";"ARO80";"1509";"High";"";"PBM motif 2115 appears monomeric and has highest correspondence to ChIP-chip data. ChIP motif 1509 appears dimeric and correlates with ChIP data. Literature motif 725 appears trimeric and has experimental support. Retain all three."
+;"YDR421W";"ARO80";"2115";"High";"";"PBM motif 2115 appears monomeric and has highest correspondence to ChIP-chip data. ChIP motif 1509 appears dimeric and correlates with ChIP data. Literature motif 725 appears trimeric and has experimental support. Retain all three."
+;"YDR409W";"SIZ1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YDR362C";"TFC6";"0";"";"Dubious";"Unlikely to be true TF."
+;"YDR323C";"PEP7";"0";"";"Dubious";"Unlikely to be true TF."
+;"YDR310C";"SUM1";"383";"High";"";"This is the motif for the FL SUM1; scores highest on ChIP-chip and resembles the canonical literature motif; also has some relationship to deletion expression data"
+;"YDR310C";"SUM1";"478";"High";"";"This is the motif for the SUM1 AT_hook; scores highest in deletion expression data"
+;"YDR303C";"RSC3";"580";"High";"";"PBM motif 580 has best correspondence to expression data - the only significant independent criterion - considering that the correlations are all in the same orientation (they are not for 2165).  All motifs look similar. Propose that longer motifs could be due to multiple binding sites in the same sequence."
+;"YDR277C";"MTH1";"0";"";"Dubious";"SGD:  \"interacts with Rgt1p and the Snf3p and Rgt2p glucose sensors\".  There is no evidence that this is a sequence-specific transcription factor."
+;"YDR266C";"";"1161";"Low";"";"Motifs from ChIP-chip do not correspond to ChIP-chip, and there is no other supporting data.  Chose 1161 only because it looks more reasonable.  Low confidence."
+;"YDR259C";"YAP6";"599";"High";"";"PBM and ChIP-chip can derive basically the same motif, which is a classical YAP motif.  They score similarly on all criteria.  The ChIP-chip motif (599) has fewer low-information flanking bases."
+;"YDR253C";"MET32";"2140";"High";"";"Most motifs look similar. PBM motif 2140 has highest correspondence to both ChIP and expression."
+;"YDR227W";"SIR4";"0";"";"Dubious";"There is no evidence that the SIR proteins are sequence-specific DNA-binding proteins.  Most of the motifs for them are Rap1 sites."
+;"YDR225W";"HTA1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YDR216W";"ADR1";"576";"High";"";"PBM motif 576 has significant correspondence to both ChIP-chip and highest to expression data.  And has a classic yeast C2H2 look."
+;"YDR213W";"UPC2";"544";"High";"";"The SRE is bound by UPC2 and the \"canonical\" sequence is TCGTATA. However, the more degenerate version obtained by PBM (motif 544) scores better in both expression analysis and OE experiments.  Newer motif 2109 scores better on ChIP-chip, but lower on expression, and the SRE is well-characterized....I think this one deserves further experimental analysis."
+;"YDR207C";"UME6";"2239";"High";"";"All motifs are similar to each other. BEEML-PBM motif 2239 scores highest across the board."
+;"YDR174W";"HMO1";"2249";"Low";"";"This motif is uncharacteristic for a Sox protein and HMG proteins typically do not bind DNA in a sequence specific manner.  Since it is from ChIP data it could be a cofactor motif.  Low confidence."
+;"YDR169C";"STB3";"2233";"High";"";"STB3 binds RRPE element (AAAAATTT) both in vivo and in vitro (PMID 17616518). PBM motifs 810 and 2233 strongly resembles the RRPE element, scores significantly in deletion expression data, and nail the GO categories \"nucleolus\" and \"ribosome biogenesis\".  2233 gets slightly higher scores."
+;"YDR146C";"SWI5";"569";"High";"";"PBM, Chip-chip, and conservation all yield similar motifs.  ChIP-chip scores highest in ChIP-chip but that is circular.  Choose PBM motif 569 which is nearly identical."
+;"YDR123C";"INO2";"713";"High";"";"Ino2/4 binds as a heterodimer, so there should just be one motif for the two proteins.  All motifs appear similar but none of them is derived from in vitro data.  Nonetheless most motifs match a classic E-box with some preference for flanking bases.  Motif 713 is derived from ChIP-chip; it is not the highest-scoring ChIP-chip motif but it is highest for OE and deletion expression."
+;"YDR096W";"GIS1";"562";"High";"";"All motifs similar; PBM motif 562 has highest correspondence to deletion expression data and overexpression data"
+;"YDR081C";"PDC2";"1050";"Low";"";"Motifs do not correlate with the ChIP-chip data from which it was derived.  I found no other experimental evidence that this is a sequence-specific DNA-binding protein.  However, it does have HTH and transposase motifs.  Retain motif 1050 but give low confidence."
+;"YDR049W";"";"0";"";"Dubious";"No evidence this is a TF, aside from a poorly-scoring C2H2 zinc finger"
+;"YDR043C";"NRG1";"2148";"High";"";"PBM, ChIP-chip, and literature motifs all appear very similar, and resemble motif for the related protein NRG2. Choose top PBM motif (2148).  There is also a recurring ChIP-chip motif (TGTGCCT) which I believe is actually the MOT3 binding site."
+;"YDR034C";"LYS14";"133";"High";"";"PBM motifs are virtually identical and appear monomeric; literature motif is dimeric.  Include both.  Choose PBM motif 865 as it appears to have more robust CGG."
+;"YDR034C";"LYS14";"865";"High";"";"PBM motifs are virtually identical and appear monomeric; literature motif is dimeric.  Include both.  Choose PBM motif 865 as it appears to have more robust CGG."
+;"YDR026C";"";"696";"High";"";"Three ChIP-chip motifs are virtually identical in appearance; resemble Reb1 motifs; high correspondence to ChIP-chip data"
+;"YDR009W";"GAL3";"0";"";"Dubious";"Gal3 is not a sequence-specific DNA-binding protein"
+;"YDL170W";"UGA3";"486";"Medium";"";"Appears to be a monomeric GAL4-class motif.  Derived from PBM data, scores highly in ChIP-chip data, but not as high as the dimeric site derived from the ChIP-chip data."
+;"YDL170W";"UGA3";"651";"High";"";"Appears to be a dimeric GAL4-class motif.  Scores highest in ChIP-chip data, but is derived from the same data.  GO seems to match known function!"
+;"YDL166C";"FAP7";"0";"";"Dubious";"This is supposed to be a ribosome biogenesis factor.  I found no evidence that it is a sequence-specific DNA-binding protein."
+;"YDL106C";"PHO2";"2154";"High";"";"Motifs are largely all different from each other. PBM motif 2154 scores highly on ChIP data and resembles classic TAAT homeobox core. Note that PBM motif 794 even more strongly resembles homeobox (TAATTA) but scores slightly less highly."
+;"YDL106C";"PHO2";"1680";"Incorrect";"";"Likely represents Abf1 binding site."
+;"YDL074C";"BRE1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YDL056W";"MBP1";"2138";"High";"";"Almost all motifs look similar to literature binding site. PBM motif 2138 scores at the top on ChIP-chip and expression. And is non-circular."
+;"YDL048C";"STP4";"559";"Medium";"";"STP3 and 4 have very similar DNA-binding domains.  However, they are not similar to those of STP1 and 2; the next most closely related are SWI5 and ACE2, with major differences in the recognition alpha helices.  All of the STP4 motifs are different from each other and none have any supporting data.  There is only one motif for STP3 (568) from PBM and it matches the STP4 motif from the same study (559) which is the basis for choosing these two motifs."
+;"YDL042C";"SIR2";"0";"";"Dubious";"There is no evidence that the SIR proteins are sequence-specific DNA-binding proteins.  Most of the motifs for them are Rap1 sites."
+;"YDL020C";"RPN4";"1090";"Incorrect";"";"Likely represents Reb1 binding site."
+;"YDL020C";"RPN4";"1700";"High";"";"In vitro motifs do not contain the TTT sequence on the end.  But they were derived from the DBD only.  The rest of the protein may contribute to binding the TTT segment.  Motif 1700 has the highest correspondence to ChIP-chip and expression and GO."
+;"YDL002C";"NHP10";"502";"Low";"Dubious";"NHP10 is an HMGB-type protein.  Known to prefer DNA ends.  There is no independent support for the single PBM motif."
+;"YCR106W";"RDS1";"506";"High";"";"All motifs look similar.  PBM motif 506 has a higher score on ChIP-chip than any of the ChIP-chip derived motifs."
+;"YCR096C";"HMRA2";"558";"Medium";"";"Should be similar to MATALPHA2.  The one PBM motif is indeed related to the MITOMI motif for MATALPHA2."
+;"YCR066W";"RAD18";"0";"";"Dubious";"Unlikely to be true TF."
+;"YCR065W";"HCM1";"570";"High";"";"PBM and SAAB/EMSA motifs both look similar to standard FH motif.  PBM motif 570 has stronger correspondence to expression data."
+;"YCR040W";"MATALPHA1";"1418";"Low";"";"According to PMID: 15118075, binds the \"Q site\" which has \"consensus\" ACAATGACAG.  Seems all that is in common is the CAAT.  I believe further study is required."
+;"YCR039C";"MATALPHA2";"1364";"High";"";"According to PMID: 9858582, \"A comparison of the 2 binding sites in both asg and hsg operators yields the same consensus sequence, 5\'-CATGTA-3\"; results in Figure 2 of the same paper support a consensus of CATGTAA.  MITOMI yields ACATG, which is the reverse complement of most of the literature consensus.  Motif 1364 has highest information content; use this."
+;"YCR033W";"SNT1";"0";"";"Dubious";"Unlikely to be true TF."
+;"YCR018C";"SRD1";"2232";"Medium";"";"PBM studies yield nearly identical motifs. 2232 closely resembles motif from related GATA factors and scores highest overall. This is an unusual motif for the GATA class; hence medium confidence level."
+;"YCL067C";"HMLALPHA2";"2102";"Medium";"";"Protein is similar to PBX/MEIS/TGIF; both PBM motifs have some similarity (central ACA/TGT), so do sites in crystal and in vivo (e.g. PMID: 1682054) but no clear winner between the two.  Keep both PBM motifs in curated set (2102 and 2079) but give medium confidence - no supporting ChIP or expression data."
+;"YCL067C";"HMLALPHA2";"2079";"Medium";"";"Protein is similar to PBX/MEIS/TGIF; both PBM motifs have some similarity (central ACA/TGT), so do sites in crystal and in vivo (e.g. PMID: 1682054) but no clear winner between the two.  Keep both PBM motifs in curated set (2102 and 2079) but give medium confidence - no supporting ChIP or expression data."
+;"YCL058C";"FYV5";"1417";"Low";"";"Literature motif is derived from a single promoter and while the protein seems to have some DNA-binding activity, perhaps in conjunction with other TFs, I find the evidence supporting this precise binding site incomplete, since it is derived from a single site.  Hence, low confidence in the motif."
+;"YCL055W";"KAR4";"127";"Low";"Dubious";"Evidence for sequence specific DNA binding seems weak, hence low confidence "
+;"YBR297W";"MAL33";"0";"";"";"None of the ChIP-chip motifs correspond wekk to the data they come from and/or resemble a GAL4 motif."
+;"YBR267W";"REI1";"489";"High";"";"PBM motif looks like a yeast C2H2 motif (row of C\'s); highly significant relationship to ChIP-chip data"
+;"YBR240C";"THI2";"1449";"High";"";"This is a GAL4-class protein.  All motifs are ChIP-chip derived, none resembles each other.  1449 is the only one with respectable scores on ChIP and expression,and it also has the appearance of a GAL4 class motif..although, the structural prior presumably forces it to have this property."
+;"YBR239C";"ERT1";"2188";"Medium";"";"Three PBM motifs are all classic monomeric GAL4 motifs. Chose 2188 because it has fewer noninformative flanking positions, and higher significance on expression data. Also, 826 has the CCGG core that I suspect may be an artefact of PBMs or the DBD clones used in these studies. The highest-scoring ChIP motif is circular and does not resemble a GAL4 class binding site."
+;"YBR182C";"SMP1";"864";"Medium";"";"PBM motif 864 scores highest on ChIP-chip and expression data.  I gave it a medium, however, because it has low information content at most positions, does not closely match the literature motif (although the literature motif does not mach ChIP-chip or expression data), and also does not resemble that of RLM1, which according to the literature should be related."
+;"YBR150C";"TBS1";"552";"High";"";"Two motifs from PBMs are nearly identical GAL4-class motifs with defined spacing and orientation. Motif 552 has slightly higher scores.  Two motifs from BEEML analysis of PBM data give monomeric motif - also give this high confidence."
+;"YBR150C";"TBS1";"2179";"High";"";"Two motifs from PBMs are nearly identical GAL4-class motifs with defined spacing and orientation. Motif 552 has slightly higher scores.  Two motifs from BEEML analysis of PBM data give monomeric motif - also give this high confidence."
+;"YBR089C-A";"NHP6B";"792";"Medium";"";"NHP6A and NHP6B are similar to the HMGB family, which is thought to lack sequence specificity.  However, the proteins do bend the DNA when they bind, and so may have some level of sequence specificity.  Essentially similar motifs were obtained for the two different proteins (in the same study) and the PBM motif for Nhp6A has a good correspondence to ChIP-chip data.  Give both Medium confidence."
+;"YBR083W";"TEC1";"815";"High";"";"All motifs agree, and are significant by several criteria.  PBM motif 815 has the second-highest scores overall, and it is non-circular for in vivo binding.  Also has highest GO score."
+;"YBR066C";"NRG2";"1383";"High";"";"MITOMI motif 1383 looks like a classic yeast C2H2 binding site (row of G\'s).  Also resembles motifs obtained by both ChIP and PBMs for related protein Nrg1.  "
+;"YBR060C";"ORC2";"0";"";"Dubious";"Unlikely to be true TF."
+;"YBR049C";"REB1";"907";"High";"";"All motifs are similar.  ChIP-chip motif 907 has highest correspondence to both ChIP-chip and expression data, and strongly resembles MITOMI and PBM motifs."
+;"YBR033W";"EDS1";"2093";"High";"";"PBM and ChIP-chip motifs are very similar. PBM motif 2093 scores most significantly on ChIP data.  Classic GAL4 class motif."
+;"YBL103C";"RTG3";"1446";"Low";"";"Only the PBM motif is a classic HLH motif.  Three different ChIP-chip-derived motifs are all diverse, but all score highly on ChIP-chip data!  Are they motifs of other TFs?  Check.  602: GCN4; 1095, TEC1; 1096: resembles 602, but is a closer match to CUP9/TOS8.  Also hits GCN4. According to the literature (PMID: 9032238) the core binding site for the Rtg1p-Rtg3p heterodimer is 5\'-GGTCAC-3\'; the only motif that resembles this is 1446.  Vague resemblance to 602 and 1096.  I am going to retain 1446, which represents the literature site; PBM motif 870, which resembles an E-box, and ChIP-chip motif 1445, which scores highest on ChIP-chip data.  But give all low confidence."
+;"YBL103C";"RTG3";"1445";"Low";"";"Only the PBM motif is a classic HLH motif.  Three different ChIP-chip-derived motifs are all diverse, but all score highly on ChIP-chip data!  Are they motifs of other TFs?  Check.  602: GCN4; 1095, TEC1; 1096: resembles 602, but is a closer match to CUP9/TOS8.  Also hits GCN4. According to the literature (PMID: 9032238) the core binding site for the Rtg1p-Rtg3p heterodimer is 5\'-GGTCAC-3\'; the only motif that resembles this is 1446.  Vague resemblance to 602 and 1096.  I am going to retain 1446, which represents the literature site; PBM motif 870, which resembles an E-box, and ChIP-chip motif 1445, which scores highest on ChIP-chip data.  But give all low confidence."
+;"YBL103C";"RTG3";"870";"Low";"";"Only the PBM motif is a classic HLH motif.  Three different ChIP-chip-derived motifs are all diverse, but all score highly on ChIP-chip data!  Are they motifs of other TFs?  Check.  602: GCN4; 1095, TEC1; 1096: resembles 602, but is a closer match to CUP9/TOS8.  Also hits GCN4. According to the literature (PMID: 9032238) the core binding site for the Rtg1p-Rtg3p heterodimer is 5\'-GGTCAC-3\'; the only motif that resembles this is 1446.  Vague resemblance to 602 and 1096.  I am going to retain 1446, which represents the literature site; PBM motif 870, which resembles an E-box, and ChIP-chip motif 1445, which scores highest on ChIP-chip data.  But give all low confidence."
+;"YBL054W";"TOD6";"852";"High";"";"Two PBM motifs largely agree; 852 has higher correspondence to expression data while 495 has higher correspondence to ChIP-chip.  Use 852; score is way higher.  Also for GO."
+;"YBL052C";"SAS3";"0";"";"Dubious";"Unlikely to be true TF."
+;"YBL021C";"HAP3";"695";"High";"";"Subunit of the heme-activated, glucose-repressed Hap2/3/4/5 CCAAT-binding complex - there should be a single motif for all four proteins, containing CCAAT.  ChIP-chip motif 695 resembles CCAATCA, and scores highly on ChIP-chip, OE, and deletion expression data."
+;"YBL008W";"HIR1";"0";"";"Dubious";"Hir1,2,3 are a nucleosome assembly complex, not TFs"
+;"YBL005W";"PDR3";"2062";"Medium";"";"MITOMI yields a simple GAL4 monomeric site that scores well in ChIP-chip data.  ChIP-chip yields a dimeric site that resembles the literature site.  In vivo, PDR1 and PDR3 may form heterodimers.  Retain both.  This is the dimeric ChIP-chip motif."
+;"YBL005W";"PDR3";"1387";"Medium";"";"MITOMI yields a simple GAL4 monomeric site that scores well in ChIP-chip data.  ChIP-chip yields a dimeric site that resembles the literature site.  In vivo, PDR1 and PDR3 may form heterodimers.  Retain both.  This is the monomeric motif."
+;"YBL003C";"HTA2";"0";"";"Dubious";"Unlikely to be true TF."
+;"YAL051W";"OAF1";"2060";"Medium";"";"Motif 2060 has a strong resemblance to the literature motifs for the Oaf1-Pip2 dimer, and scores highly on both ChIP and expression data.  No in vitro support and it\'s kind of weak looking so Medium confidence."
+;"TBP-TFIIB";"TBP-TFIIB";"1329";"Medium";"";"The TIRF-PBM data used to generate the motif included only 96 sequences; hence, medium confidence."
+;"TBP-TFIIA-TFIIB";"TBP-TFIIA-TFIIB";"1330";"Medium";"";"The TIRF-PBM data used to generate the motif included only 96 sequences; hence, medium confidence."
+;"TBP-TFIIA";"TBP-TFIIA";"1328";"Low";"";"The TIRF-PBM data used to generate the motif included only 96 sequences.  Also it is curious that there is no TATA sequence in the logo."
+;"MBP1-SWI6-dimer";"MBP1-SWI6-dimer";"0";"";"";"Redundant with MBP1"
+;"MATALPHA1-MCM1-dimer";"alpha1-MCM1-dimer";"1442";"Medium";"";"Not clear that motif is optimal."
+;"MATA1-MATALPHA2-dimer";"a1-alpha2-dimer";"1436";"Medium";"";"Not clear that motif is optimal."
+;"MATA1";"";"0";"";"";"Need to study literature more carefully and consult experts.but at first glance none of these motifs seems right"
+;"MAL63";"";"136";"Medium";"";"This is an unconventional dimeric GAL4-class motif"

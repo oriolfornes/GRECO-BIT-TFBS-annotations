@@ -6,7 +6,7 @@ import sys
 
 # Append JASPAR-profile-inference to path
 jaspar_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                          os.pardir, "JASPAR-profile-inference")
+                          os.pardir, os.pardir, "JASPAR-profile-inference")
 sys.path.append(jaspar_dir)
 
 # Import globals
@@ -24,12 +24,12 @@ def parse_args():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("tfs", help="TF list (e.g. TAIR, Ensembl, etc.)")
-    parser.add_argument("txt", help="UniProt TXT file")
-    parser.add_argument("fas", help="UniProt FASTA file")
+    parser.add_argument("tfs", help="tf list (e.g. TAIR, Ensembl, etc.)")
+    parser.add_argument("txt", help="uniprot txt file")
+    parser.add_argument("fas", help="uniprot fasta file")
 
     taxons = ["fungi", "insects", "nematodes", "plants", "vertebrates"]
-    parser.add_argument("tax", choices=taxons, help="Taxon (i.e. %s)" % \
+    parser.add_argument("tax", choices=taxons, help="taxon (i.e. %s)" % \
                         ", ".join(taxons), metavar="tax")
 
     return(parser.parse_args())
@@ -65,34 +65,36 @@ def main():
             if unientry in fas:
                 if genes:
                     for gene in genes:
-                        txt.setdefault(gene, [])
-                        txt[gene].append((uniaccs, unientry, pfams))
-                txt.setdefault(fas[unientry][1], [])
-                txt[fas[unientry][1]].append((uniaccs, unientry, pfams))
+                        txt.setdefault(gene, {})
+                        txt[gene].setdefault(reviewed, [])
+                        txt[gene][reviewed].append((uniaccs, unientry, pfams))
         if line.startswith("ID"):
-            m = re.search("^ID\s+(\S+)", line)
+            m = re.search("^ID\s+(\S+)\s+(Reviewed|Unreviewed);", line)
             unientry = m.group(1)
+            reviewed = m.group(2)
             uniaccs = []
             genes = set()
-            pfams = set()
+            pfams = set()        
         if line.startswith("AC"):
             uniaccs += re.findall("(\S+);", line)
         if line.startswith("GN"):
-            m = re.search("OrderedLocusNames=(\S+);", line)
-            if m: genes.add(m.group(1))
-            m = re.search("ORFNames=(\S+);", line)
-            if m: genes.add(m.group(1))
+            if args.tax == "fungi" or args.tax == "vertebrates":
+                m = re.search("Name=(\S+);", line)
+                if m: genes.add(m.group(1))
+                m = re.search("OrderedLocusNames=(\S+);", line)
+                if m: genes.add(m.group(1))
+                m = re.search("ORFNames=(\S+);", line)
+                if m: genes.add(m.group(1))
         if line.startswith("DR"):
-            m = re.search("^DR\s+Ensembl; \S+; \S+; (\S+).", line)
-            if m: genes.add(m.group(1))
-            m = re.search("^DR\s+FlyBase; (\S+); \S+.", line)
-            if m: genes.add(m.group(1))
-            # m = re.search("^DR\s+SGD; \S+; (\S+).", line)
-            # if m: genes.add(m.group(1))
-            m = re.search("^DR\s+TAIR; locus:\d+; (\S+).", line)
-            if m: genes.add(m.group(1))
-            m = re.search("^DR\s+WormBase; \S+; \S+; (\S+); \S+.", line)
-            if m: genes.add(m.group(1))
+            if args.tax == "insects" or args.tax == "nematodes" or args.tax == "plants":
+                m = re.search("^DR\s+FlyBase; (\S+); \S+.", line)
+                if m: genes.add(m.group(1))
+                # m = re.search("^DR\s+SGD; \S+; (\S+).", line)
+                # if m: genes.add(m.group(1))
+                m = re.search("^DR\s+Araport; (\S+);", line)
+                if m: genes.add(m.group(1))
+                m = re.search("^DR\s+WormBase; \S+; \S+; (\S+); \S+.", line)
+                if m: genes.add(m.group(1))
             m = re.search("^DR\s+Pfam; PF\d+; (\S+); \S+.", line)
             if m: pfams.add(m.group(1))
 
@@ -106,22 +108,26 @@ def main():
             families = set()
             sequences = []
             jaspar_motifs = set()
-            for uaccs, uentry, pfams in txt[tf]:
-                for uniacc in uaccs:
-                    if uniacc in jaspar2uniprot:
-                        for jaspar_motif in jaspar2uniprot[uniacc][0]:
-                            jaspar_motifs.add(jaspar_motif)
-                for pfam in pfams:
-                    families.add(pfam)
-                if fas[uentry][0] not in uniaccs:
-                    uniaccs.append(fas[uentry][0])
-                    unientries.append(uentry)
-                    sequences.append(fas[uentry][2])
-                    families.update(pfams)
+            for reviewed in ["Reviewed", "Unreviewed"]:
+                if reviewed not in txt[tf]:
+                    continue
+                for uaccs, uentry, pfams in txt[tf][reviewed]:
+                    for uniacc in uaccs:
+                        if uniacc in jaspar2uniprot:
+                            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                                jaspar_motifs.add(jaspar_motif)
+                    for pfam in pfams:
+                        families.add(pfam)
+                    if fas[uentry][0] not in uniaccs:
+                        uniaccs.append(fas[uentry][0])
+                        unientries.append(uentry)
+                        sequences.append(fas[uentry][2])
+                        families.update(pfams)
+                break
             print("%s\t%s\t%s\t%s\t%s\t%s" % \
                     (fas[uentry][1], ";".join(uniaccs), ";".join(unientries),
-                     ";".join(sorted(families)), ";".join(sequences),
-                     ";".join(sorted(jaspar_motifs)))
+                    ";".join(sorted(families)), ";".join(sequences),
+                    ";".join(sorted(jaspar_motifs)))
             )
 
 #-------------#
