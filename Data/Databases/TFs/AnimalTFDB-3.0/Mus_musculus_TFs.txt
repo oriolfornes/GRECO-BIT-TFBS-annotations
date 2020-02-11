@@ -1316,7 +1316,6 @@ Zfp599
 Zfp735
 Thap3
 Hesx1
-Trp73
 Zfp446
 Zfp971
 Zfp930
@@ -1635,3 +1634,6 @@ D630045J12Rik
 Lyar
 Cenps
 Purb
+Cxxc1
+Tbp
+Tp73

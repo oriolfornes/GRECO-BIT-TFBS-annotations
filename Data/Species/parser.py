@@ -52,7 +52,7 @@ def main():
     # For each header, sequence...
     fas = {}
     for seq_record in Jglobals.parse_fasta_file(args.fas):
-        m = re.search("^\S+\|(\S+)\|(\S+) .+ GN=(.+) PE=\d+ ",
+        m = re.search("^\S+\|(\S+)\|(\S+) .+ OX=\d+ GN=(.+) PE=\d+ ",
                       seq_record.description)
         if m:
             fas.setdefault(m.group(2), [m.group(1), m.group(3),
@@ -63,24 +63,27 @@ def main():
     for line in Jglobals.parse_file(args.txt):
         if line.startswith("//"):
             if unientry in fas:
-                if genes:
-                    for gene in genes:
-                        txt.setdefault(gene, {})
-                        txt[gene].setdefault(reviewed, [])
-                        txt[gene][reviewed].append((uniaccs, unientry, pfams))
+                for gene in genes:
+                    txt.setdefault(gene, {})
+                    txt[gene].setdefault(reviewed, [])
+                    txt[gene][reviewed].append((uniaccs, unientry, pfams))
         if line.startswith("ID"):
             m = re.search("^ID\s+(\S+)\s+(Reviewed|Unreviewed);", line)
             unientry = m.group(1)
             reviewed = m.group(2)
             uniaccs = []
             genes = set()
-            pfams = set()        
+            pfams = set()
         if line.startswith("AC"):
             uniaccs += re.findall("(\S+);", line)
         if line.startswith("GN"):
-            if args.tax == "fungi" or args.tax == "vertebrates":
-                m = re.search("Name=(\S+);", line)
-                if m: genes.add(m.group(1))
+            if args.tax == "vertebrates":
+                genes.add(fas[unientry][1])
+                m = re.search("Name=\S+\s*.*; Synonyms=(.+);", line)
+                if m:
+                    for gene in m.group(1).split(", "):
+                        genes.add(gene)
+            elif args.tax == "fungi":
                 m = re.search("OrderedLocusNames=(\S+);", line)
                 if m: genes.add(m.group(1))
                 m = re.search("ORFNames=(\S+);", line)
@@ -98,7 +101,7 @@ def main():
             m = re.search("^DR\s+Pfam; PF\d+; (\S+); \S+.", line)
             if m: pfams.add(m.group(1))
 
-    print("Gene Name\tUniProt Accession\tUniProt Entry\tPfam ID\tSequence\tJASPAR")
+    print("Gene Name\tUniProt Accession\tUniProt Entry\tStatus\tPfam ID\tSequence\tJASPAR")
     # For each tf...
     for tf in sorted(tfs):
         if tf in txt:
@@ -123,11 +126,11 @@ def main():
                         unientries.append(uentry)
                         sequences.append(fas[uentry][2])
                         families.update(pfams)
-                break
-            print("%s\t%s\t%s\t%s\t%s\t%s" % \
+
+            print("%s\t%s\t%s\t%s\t%s\t%s\t%s" % \
                     (fas[uentry][1], ";".join(uniaccs), ";".join(unientries),
-                    ";".join(sorted(families)), ";".join(sequences),
-                    ";".join(sorted(jaspar_motifs)))
+                     reviewed, ";".join(sorted(families)), ";".join(sequences),
+                     ";".join(sorted(jaspar_motifs)))
             )
 
 #-------------#
