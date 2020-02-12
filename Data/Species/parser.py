@@ -7,9 +7,9 @@ import sys
 # Append JASPAR-profile-inference to path
 jaspar_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),
                           os.pardir, os.pardir, "JASPAR-profile-inference")
-sys.path.append(jaspar_dir)
+sys.path.insert(0, os.path.realpath(jaspar_dir))
 
-# Import globals
+# Import from JASPAR-profile-inference
 from __init__ import Jglobals
 
 #-------------#
@@ -43,6 +43,12 @@ def main():
     json_file = os.path.join(jaspar_dir, "files", "%s.uniprot.json" % args.tax)
     with open(json_file) as f:
         jaspar2uniprot = json.load(f)
+
+    # Get Pfam DBDs
+    json_file = os.path.join(jaspar_dir, "files", "pfam-DBDs.json")
+    with open(json_file) as f:
+        pfams = json.load(f)
+        valid_pfams = set([pfams[i][0] for i in pfams])
 
     # Get TFs
     tfs = set()
@@ -120,13 +126,15 @@ def main():
                             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                                 jaspar_motifs.add(jaspar_motif)
                     for pfam in pfams:
-                        families.add(pfam)
+                        if pfam in valid_pfams:
+                            families.add(pfam)
                     if fas[uentry][0] not in uniaccs:
                         uniaccs.append(fas[uentry][0])
                         unientries.append(uentry)
                         sequences.append(fas[uentry][2])
                         families.update(pfams)
-
+            if not families:
+                families.add("Unknown")
             print("%s\t%s\t%s\t%s\t%s\t%s\t%s" % \
                     (fas[uentry][1], ";".join(uniaccs), ";".join(unientries),
                      reviewed, ";".join(sorted(families)), ";".join(sequences),
