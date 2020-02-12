@@ -132,7 +132,6 @@ def main():
                         uniaccs.append(fas[uentry][0])
                         unientries.append(uentry)
                         sequences.append(fas[uentry][2])
-                        families.update(pfams)
             if not families:
                 families.add("Unknown")
             print("%s\t%s\t%s\t%s\t%s\t%s\t%s" % \
