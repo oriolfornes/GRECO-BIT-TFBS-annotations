@@ -58,6 +58,38 @@ class CISBP(object):
         return(string)
 
 #-------------#
+# Functions   #
+#-------------#
+
+def uniacc_to_OrthoDB_cluster(uniacc):
+
+    # Initialize
+    codec = coreapi.codecs.CoreJSONCodec()
+    client = coreapi.Client()
+    orthodb_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                               ".OrthoDB")
+
+    if not os.path.isdir(orthodb_dir):
+        os.mkdir(orthodb_dir)
+
+    # Skip if already JSON data already fetched
+    json_file = os.path.join(orthodb_dir, ".%s.json" % uniacc)
+    if not os.path.exists(json_file):
+
+        # Get response
+        url = "https://www.orthodb.org/search?query=%s&level=2759&species=2759" % \
+            uniacc
+        response = client.get(url)
+        json_obj = json.loads(codec.encode(response))
+        with open(json_file, "w") as j:
+            j.write(json.dumps(json_obj))
+
+    with open(json_file, "r") as j:  
+        json_obj = json.load(j)
+        for orthodb_cluster in json_obj["data"]:
+            yield(orthodb_cluster)
+
+#-------------#
 # Main        #
 #-------------#
 
@@ -71,7 +103,7 @@ species = {
     "Saccharomyces_cerevisiae": "fungi"
 }
 
-print("Name\tUniAcc\tUniEntry\tStatus\tFamily\tSequence\tJASPAR")
+print("Name\tUniAcc\tUniEntry\tSequence\tStatus\tFamily\tOrthoDB\tJASPAR")
 
 for s in sorted(species):
 
@@ -86,7 +118,7 @@ for s in sorted(species):
 
     # Get TFs
     tfs = set()
-    tfs_file = os.path.join(root_dir, "Data", "Databases", "TFs", "CisBP-2.0",
+    tfs_file = os.path.join(root_dir, "Data", "Databases", "CisBP-2.0",
                             "%s.csv" % s)
     for line in Jglobals.parse_csv_file(tfs_file):
         if line[0] == "ID":
@@ -152,7 +184,6 @@ for s in sorted(species):
     lines = []
 
     # For each CIS-BP object...
-
     for cisbp in sorted(tfs):
 
         if cisbp.geneid not in txt:
@@ -164,6 +195,7 @@ for s in sorted(species):
         family = cisbp.family
         sequences = []
         jaspar_motifs = set()
+        clusters = set()
         for reviewed in ["Reviewed", "Unreviewed"]:
             if reviewed not in txt[cisbp.geneid]:
                 continue
@@ -172,43 +204,58 @@ for s in sorted(species):
                     if uniacc in jaspar2uniprot:
                         for jaspar_motif in jaspar2uniprot[uniacc][0]:
                             jaspar_motifs.add(jaspar_motif)
+                    for cluster in uniacc_to_OrthoDB_cluster(uniacc):
+                        clusters.add(cluster)
                 if fas[uentry][0] not in uniaccs:
                     uniaccs.append(fas[uentry][0])
                     unientries.append(uentry)
                     sequences.append(fas[uentry][2])
             break
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s" % \
+
+        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % \
                      (fas[uentry][1], ";".join(uniaccs), ";".join(unientries),
-                     reviewed, family, ";".join(sequences),
+                     ";".join(sequences), reviewed, family, ";".join(sorted(clusters)),
                      ";".join(sorted(jaspar_motifs))))
-    
+
     # Fix species-specific cases
     if s == "Arabidopsis_thaliana":
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("Q9MAB7"):
+            clusters.add(cluster)
         seq = ["MEEQQEFEKPIFEFRPKKLRTSRVSRNLMKKTGFRESMNHYEELSCNYGLRENPKKTQKS",
                "LLDHRFCTRRRRNKKILIRCKECGKGFLYEKCLFNHLQVTHSEESTRRSLFCRFSIVQRR",
                "KRSKRVSRYKKILPRFSVSSSSCTMFPVSVDDGGLLEVAESLILLSMSGGKFVNGLEHFG",
                "KALGSTQRKFEDGLLRNEQRLVGEALDSNPEKKLVGISRASVGTSKELSGYLANKKGRED",
                "DELGQQKQAGARILREETDNEQKLVRQETAFEDSVSGFEMNIEHRCGLCHKVFSTYQTLG",
                "GHQTFHRMRNKSKSQTKRCREESIEAEAGINNGSVTLTISAEFAEGCLGQYML"]
-        lines.append("T4P13.29\tQ9MAB7\tQ9MAB7_ARATH\tUnreviewed\tC2H2 ZF\t%s\t" % \
-                     "".join(seq))
+        lines.append("T4P13.29\tQ9MAB7\tQ9MAB7_ARATH\t%s\tUnreviewed\tC2H2 ZF\t%s\t" % \
+                     ("".join(seq), ";".join(sorted(clusters))))
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("O49746"):
+            clusters.add(cluster)
         seq = ["MGRAPCCDKANVKKGPWSPEEDAKLKSYIENSGTGGNWIALPQKIGLKRCGKSCRLRWLN",
                "YLRPNIKHGGFSEEEENIICSLYLTIGSRWSIIAAQLPGRTDNDIKNYWNTRLKKKLINK",
                "QRKELQEACMEQQEMMVMMKRQHQQQQIQTSFMMRQDQTMFTWPLHHHNVQVPALFRIKP",
                "TRFATKKMLSQCSSRTWSRSKIKNWRKQTSSSSRFNDNAFDHLSFSQLLLDPNHNHLGSG",
                "EGFSMNSILSANTNSPLLNTSNDNQWFGNFQAETVNLFSGASTSTSADQSTISWEDISSL",
                "VYSDSKQFF"]
-        lines.append("AtMYB84\tO49746\tO49746_ARATH\tUnreviewed\tMyb/SANT\t%s\t" % \
-                     "".join(seq))
+        lines.append("AtMYB84\tO49746\tO49746_ARATH\t%s\tUnreviewed\tMyb/SANT\t%s\t" % \
+                    ("".join(seq), ";".join(sorted(clusters))))
     elif s == "Caenorhabditis_elegans":
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("Q18056"):
+            clusters.add(cluster)
         seq = ["MPKVIPSSMSDYRSVPYNQTPKSGSERKRRNITNELINECKTIVQKSEEEHISQEVVLFR",
                "IVKLVTGVNLESNFSSNDLSESTRRKFDTESERRKVKTEREKIRRKKQDDCYAELKFFIL",
                "NKQMGSYEQRLKLERITILEIIIDYIKHNSDLLYPETIPQILPLLAGKSTATCENKENEK",
                "PKTRMEVKDLFPRLTFQEVQESPTSTSPLLTFPCIPMIPTTQFNVLSNYNTVPSIFSAPL",
                "RFILPSLQILTPETSDEEENEETVDISN"]
-        lines.append("hlh-27\tQ18056\tQ18056_CAEEL\tUnreviewed\tbHLH\t%s\t" % \
-                     "".join(seq))
+        lines.append("hlh-27\tQ18056\tQ18056_CAEEL\t%s\tUnreviewed\tbHLH\t%s\t" % \
+                     ("".join(seq), ";".join(sorted(clusters))))
     elif s == "Drosophila_melanogaster":
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("Q01295"):
+            clusters.add(cluster)
         seq = ["MDDTQHFCLRWNNYQSSITSAFENLRDDEAFVDVTLACEGRSIKAHRVVLSACSPYFREL",
                "LKSTPCKHPVILLQDVNFMDLHALVEFIYHGEVNVHQKSLQSFLKTAEVLRVSGLTQQQA",
                "EDTHSHLAQIQNLANSGGRTPLNTHTQSLPHPHHGSLHDDGGSSTLFSRQGAGSPPPTAV",
@@ -222,21 +269,30 @@ for s in sorted(species):
                "ASASTSGSANSSLNNSNSTLNTSGGLNNSASGGDDFRCNPCNKNLSSLTRLKRHIQNVHM",
                "RPTKEPVCNICKRVYSSLNSLRNHKSIYHRNLKQPKQEPGVGATQAAANSFYHQQHQQQQ",
                "LNHHSSS"]
-        lines.append("br\tQ01295\tBRC1_DROME\tReviewed\tC2H2 ZF\t%s\t" % \
-                     "".join(seq))
+        lines.append("br\tQ01295\tBRC1_DROME\t%s\tReviewed\tC2H2 ZF\t%s\tMA0010.1;MA0011.1;MA0012.1" % \
+                     ("".join(seq), ";".join(sorted(clusters))))
     elif s == "Homo_sapiens":
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("O43812"):
+            clusters.add(cluster)
         seq = ["MALLTALDDTLPEEAQGPGRRMILLSTPSQSDALRACFERNLYPGIATKEELAQGIDIPE",
                "PRVQIWFQNERSCQLRQHRRQSRPWPGRRDPQKGRRKRTAITGSQTALLLRAFEKDRFPG",
                "IAAREELARETGLPESRIQIWFQNRRARHRGQSGRAPTQASIRCNAAPIG"]
-        lines.append("DUX1\tO43812\tDUX1_HUMAN\tReviewed\tHomeodomain\t%s\t" % \
-                     "".join(seq))
+        lines.append("DUX1\tO43812\tDUX1_HUMAN\t%s\tReviewed\tHomeodomain\t%s\t" % \
+                     ("".join(seq), ";".join(sorted(clusters))))
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("Q96PT4"):
+            clusters.add(cluster)
         seq = ["MPAEVHGSPPASLCPCPSVKFRPGLPAMALLTALDDTLPEEAQGPGRRMILLSTPSQSDA",
                "LRACFERNLYPGIATKEQLAQGIDIPEPRVQIWFQNERSCQLRQHRRQSRPWPGRRDPQK",
                "GRRKRTAITGSQTALLLRAFEKDRFPGIPAREELARETGLPESRIQLWFQNRRARHWGQS",
                "GRAPTQASIRCNAAPIG"]
-        lines.append("DUX3\tQ96PT4\tDUX3_HUMAN\tReviewed\tHomeodomain\t%s\t" % \
-                     "".join(seq))
+        lines.append("DUX3\tQ96PT4\tDUX3_HUMAN\t%s\tReviewed\tHomeodomain\t%s\t" % \
+                     ("".join(seq), ";".join(sorted(clusters))))
     elif s == "Mus_musculus":
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("A1JVI6"):
+            clusters.add(cluster)
         seq = ["MAEAGSPVGGSGVARESRRRRKTVWQAWQEQALLSTFKKKRYLSFKERKELAKRMGVSDC",
                "RIRVWFQNRRNRSGEEGHASKRSIRGSRRLASPQLQEELGSRPQGRGMRSSGRRPRTRLT",
                "SLQLRILGQAFERNPRPGFATREELARDTGLPEDTIHIWFQNRRARRRHRRGRPTAQDQD",
@@ -249,12 +305,18 @@ for s in sorted(species):
                "LDEVQKEEHVPAPLDWGRNPGSMEHEGSQDSLLPLEEAANSGRDTSIPSIWPAFCRKSQP",
                "PQVAQPSGPGQAQAPIQGGNTDPLELFLDQLLTEVQLEEQGPAPVNVEETWEQMDTTPDL",
                "PLTSEEYQTLLDML"]
-        lines.append("Dux4\tA1JVI6\tA1JVI6_MOUSE\tUnreviewed\tHomeodomain\t%s\t" % \
-                     "".join(seq))
+        lines.append("Dux4\tA1JVI6\tA1JVI6_MOUSE\t%s\tUnreviewed\tHomeodomain\t%s\t" % \
+                     ("".join(seq), ";".join(sorted(clusters))))
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("Q3UE64"):
+            clusters.add(cluster)
         seq = ["SPGPSLAPGTVREKGAGKRGPDRGSPEYRQRRERNNIAVRKSRDKAKRRNQEMQQKLVEL",
                "SAENEKLHQRVEQLTRDLAGLRQFFKKLPSPPFLPPTGADCRL"]
-        lines.append("Cebpd\tQ3UE64\tQ3UE64_MOUSE\tUnreviewed\tbZIP\t%s\t" % \
-                     "".join(seq))
+        lines.append("Cebpd\tQ3UE64\tQ3UE64_MOUSE\t%s\tUnreviewed\tbZIP\t%s\t" % \
+                     ("".join(seq), ";".join(sorted(clusters))))
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("Q8K439"):
+            clusters.add(cluster)
         seq = ["MTMAAGPSSQEPEGLLIVKLEEDCAWSHEVPPPEPEPSPEASHLRFRRFRFQDAPGPREA",
                "LSRLQELCRGWLRPEMRTKEQILELLVLEQFLTILPQEIQSRVQELRPESGEEAVILVER",
                "MQKELGKLRQQFTNQGRGAEVLLEEPLPLETAGESPSFKLEPMEIERSPGPRLQELLDPS",
@@ -267,9 +329,12 @@ for s in sorted(species):
                "EKERLDPFPECGQGMNDSAPFLTNHRVEKKLFECSTCGKSFRQGMHLTRHQRTHTGEKPY",
                "KCILCGENFSHRSNLIRHQRIHTGEKPYTCHECGDSFSHSSNRIRHLRTHTGERPYKCSE",
                "CGESFSRSSRLTSHQRTHTG"]
-        lines.append("Zfp263\tQ8K439\tQ8K439_MOUSE\tUnreviewed\tC2H2 ZF\t%s\t" % \
-                     "".join(seq))
+        lines.append("Zfp263\tQ8K439\tQ8K439_MOUSE\t%s\tUnreviewed\tC2H2 ZF\t%s\t" % \
+                     ("".join(seq), ";".join(sorted(clusters))))
     elif s == "Saccharomyces_cerevisiae":
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("Q01217"):
+            clusters.add(cluster)
         seq = ["MPSASLLVSTKRLNASKFQKFVSSLNKSTIAGFASVPLRAPPSVAFTRKKVGYSKRYVSS",
                "TNGFSATRSTVIQLLNNISTKREVEQYLKYFTSVSQQQFAVIKVGGAIISDNLHELASCL",
                "AFLYHVGLYPIVLHGTGPQVNGRLEAQGIEPDYIDGIRITDEHTMAVVRKCFLEQNLKLV",
@@ -285,8 +350,11 @@ for s in sorted(species):
                "NNLIPYALSDHIHEREISARIGHNVAFMPHVGQWFQGISLTVSIPIKKGSLSIDEIRKLY",
                "RNFYEDEKLVHVIDDIPLVKDIEGTHGVVIGGFKLNDAEDRVVVCATIDNLLKGAATQCL",
                "QNINLAMGYGEYAGIPENKIIGV"]
-        lines.append("ARG5,6\tQ01217\tARG56_YEAST\tReviewed\tUnknown\t%s\t" % \
-                     "".join(seq))
+        lines.append("ARG5,6\tQ01217\tARG56_YEAST\t%s\tReviewed\tUnknown\t%s\t" % \
+                     ("".join(seq), ";".join(sorted(clusters))))
+        clusters = set()
+        for cluster in uniacc_to_OrthoDB_cluster("P10508"):
+            clusters.add(cluster)
         seq = ["MGIAKQSCDCCRVRRVKCDRNKPCNRCIQRNLNCTYLQPLKKRGPKSIRAGSLKKIAEVQ",
                "MVSMNNNIMAAPVVCKKVPKNLIDQCLRLRLYHDNLYVIWPMLSYDDLHKLLEEKYDDRC",
                "AYWFLVSLSAATLSDLQIEIEYEEGVTFTGEQLCTLCMLSRQFFDDLSNSDIFRIMTYYC",
@@ -295,8 +363,8 @@ for s in sorted(species):
                "CTEDSLKRIRNELHTTSLDIEPWSYGYIDFLFSRHWVRTLAWKLVLHMKGMRMNFLSNTN",
                "NTHIPVEIARDMLGDTFLTPKNLYDVHGPGIPMKALEIANALVDVVNKYDHNMKLEAWNV",
                "LYDVSKFVFSLKHCNNKMFDRFSTKCQGALITLPISKPLQLNDNSKDEDDIIP"]
-        lines.append("MAL63\tP10508\tMAL63_YEASX\tReviewed\tZinc cluster\t%s\t" % \
-                     "".join(seq))
+        lines.append("MAL63\tP10508\tMAL63_YEASX\t%s\tReviewed\tZinc cluster\t%s\t" % \
+                     ("".join(seq), ";".join(sorted(clusters))))
 
     # For each line...
     for line in sorted(lines):
