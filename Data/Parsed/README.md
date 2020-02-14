@@ -1,6 +1,6 @@
-1729 Arabidopsis thaliana
- 754 Caenorhabditis elegans
- 705 Drosophila melanogaster
-1631 Homo sapiens
-1480 Mus musculus
- 233 Saccharomyces cerevisiae
+* Arabidopsis thaliana (1,729 TFs)
+* Caenorhabditis elegans (754 TFs)
+* Drosophila melanogaster (705 TFs)
+* Homo sapiens (1,631 TFs)
+* Mus musculus (1,480 TFs)
+* Saccharomyces cerevisiae (233 TFs)
