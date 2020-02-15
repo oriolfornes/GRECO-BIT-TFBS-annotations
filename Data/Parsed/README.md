@@ -1,4 +1,4 @@
-Failed TFs:
+Failed codes:
 * Arabidopsis thaliana
 ```
 AT4G35375 (Exodeoxyribonuclease VII, small subunit)
