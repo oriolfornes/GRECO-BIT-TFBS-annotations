@@ -1,6 +1,79 @@
-* Arabidopsis thaliana (1,729 TFs)
-* Caenorhabditis elegans (754 TFs)
-* Drosophila melanogaster (705 TFs)
-* Homo sapiens (1,631 TFs)
-* Mus musculus (1,480 TFs)
-* Saccharomyces cerevisiae (233 TFs)
+### Failed TFs
+* Arabidopsis thaliana
+```
+AT4G35375 (Exodeoxyribonuclease VII, small subunit)
+AT5G06810 (Transcription termination factor family protein)
+AT5G06811 (Transcription termination factor family protein)
+```
+* Caenorhabditis elegans
+```
+WBGene00013134
+WBGene00013350
+WBGene00019137
+WBGene00020959
+WBGene00015966 (Uncharacterized protein)
+WBGene00016713
+WBGene00003673
+WBGene00012943
+WBGene00011567
+WBGene00018993
+WBGene00020591
+WBGene00022636
+```
+* Drosophila melanogaster
+```
+FBgn0000210 (duplicated)
+Q8IP13_DROME (obsolete)
+FBgn0042650 (disco-r)
+Q2PE40_DROME (obsolete)
+```
+* Homo sapiens
+```
+ENSG00000228623
+ENSG00000160007 (Rho GTPase-activating protein 35)
+ENSG00000267179 (Uncharacterized protein)
+ENSG00000233757 (Uncharacterized protein)
+```
+* Mus musculus
+```
+EDL38120.1
+XP_002726925.1
+ENSMUSG00000098598
+ENSMUSG00000097436
+ENSMUSG00000097200
+ENSMUSG00000097126
+XP_006525770.1
+BAE29047.1
+XP_003689450.1
+ENSMUSG00000074887
+ENSMUSG00000052909
+ENSMUSG00000098137
+ENSMUSG00000096192
+ENSMUSG00000095206
+ENSMUSG00000094740
+ENSMUSG00000074830
+ENSMUSG00000071295
+ENSMUSG00000069755
+ENSMUSG00000061969
+ENSMUSG00000101373
+ENSMUSG00000098810
+ENSMUSG00000095193
+ENSMUSG00000040775
+ENSMUSG00000046088
+ENSMUSG00000098546
+XP_001473574.2
+XP_911724.4
+ENSMUSG00000097270
+ENSMUSG00000097306
+ENSMUSG00000097600
+ENSMUSG00000106919
+ENSMUSG00000106953
+```
+* Saccharomyces cerevisiae
+```
+YGL131C (E3 ubiquitin-protein ligase SNT2)
+YDR266C (E3 ubiquitin-protein ligase HEL2)
+YER109C (Transcriptional activator FLO8)
+YER069W (Protein ARG5,6, mitochondrial)
+YDR026C (RNA polymerase I termination factor)
+```

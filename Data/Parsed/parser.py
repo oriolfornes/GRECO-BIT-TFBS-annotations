@@ -108,7 +108,7 @@ species = {
     "Saccharomyces_cerevisiae": "fungi"
 }
 
-print("Name\tSpecies\tUniAcc\tUniEntry\tSequence\tStatus\tFamily\tJASPAR")
+# print("Name\tSpecies\tUniAcc\tUniEntry\tSequence\tStatus\tFamily\tJASPAR")
 
 for s in sorted(species):
 
@@ -191,7 +191,7 @@ for s in sorted(species):
             #     orthodb.add(m.group(1))
 
     # Initialize
-    lines = []
+    lines = set()
 
     # For each CIS-BP object...
     for cisbp in sorted(tfs):
@@ -218,13 +218,13 @@ for s in sorted(species):
                     unientries.append(uentry)
                     sequences.append(fas[uentry][2])
             break
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     fas[uentry][1], ss, ";".join(uniaccs), ";".join(unientries),
-                     ";".join(sequences), reviewed, family, ";".join(sorted(jaspar_motifs))))
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  fas[uentry][1], ss, ";".join(uniaccs), ";".join(unientries),
+                  ";".join(sequences), reviewed, family, ";".join(sorted(jaspar_motifs))))
 
     # Fix species-specific cases
     if s == "Arabidopsis_thaliana":
-        # T4P13.29
+        # Q9MAB7_ARATH
         gene = "T4P13.29"
         uniacc = "Q9MAB7"
         unientry = "Q9MAB7_ARATH"
@@ -236,10 +236,63 @@ for s in sorted(species):
                "GHQTFHRMRNKSKSQTKRCREESIEAEAGINNGSVTLTISAEFAEGCLGQYML"]
         reviewed = "Unreviewed"
         family = "C2H2 ZF"
-        jaspar_motifs = ""
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT5G14340
+        gene = "MYB40"
+        uniacc = "F4K6R6"
+        unientry = "F4K6R6_ARATH"
+        seq = ["MCDLLACLRKISMGRKPCCDKIGLKRGPWTIEEDHRLMNFILNNGIHCWRIVPKLAGLLR",
+               "CGKSCRLRWINYLRPDLKRGGFTDAEEDRIMELHSQLGNRWSKIASHFSGRTDNEIKNHW",
+               "NTKIKKKMKHLGLDPATHKPMNDITHQTDPNQDKKPNMCSTINEGEEIKDQTPKDDVITE",
+               "TTKTLMLSDNDEELVAKNCKILCAEEVDLESLFETQCNEISSSSFSSLCSNISRSESSSY",
+               "LAEDSISLEQWDLDMTDPFVPWDLFANLDDNLFLL"]
+        reviewed = "Unreviewed"
+        family = "Myb/SANT"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT4G04555
+        gene = "At4g04555"
+        uniacc = "A0A1P8B772"
+        unientry = "A0A1P8B772_ARATH"
+        seq = ["MRGRIVRSYTRSKVPHWRWTDDLNLLFIQVVELLGGERRATPKVILDFMDVKNLPISHVK",
+               "SHLQMYRNKKKEESRKERRMMREMSRRQSQQYIQIYERYNWILVRR"]
+        reviewed = "Unreviewed"
+        family = "Myb/SANT"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT4G04605
+        gene = "At4g04605"
+        uniacc = "A0A1P8B8R6"
+        unientry = "A0A1P8B8R6_ARATH"
+        seq = ["MKNPIVRSYVRSKVPRLRWNSDLHNSFVQAVEQLGGENRATPKMVLQLMDVRGLTISHVK",
+               "SHLQMYRGMKLEESMQEEILAKRSVRVTGQVTWWQFQHYLHNYQRLQGNANFFQNQQRQE",
+               "AGIYEKIITFGQSSNETKEVPSDYFTCKSLYETSRAPQNKTRDDDENGEAVVAIEDDGNV",
+               "VDEHDDEDANDDEVTLSLNSIKVSKSEEELSLELTLGLKA"]
+        reviewed = "Unreviewed"
+        family = "Myb/SANT"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
         # AtMYB84
         gene = "AtMYB84"
         uniacc = "O49746"
@@ -252,12 +305,289 @@ for s in sorted(species):
                "VYSDSKQFF"]
         reviewed = "Unreviewed"
         family = "Myb/SANT"
-        jaspar_motifs = ""
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT1G63490
+        gene = "At1g63490"
+        uniacc = "Q94BQ7"
+        unientry = "Q94BQ7_ARATH"
+        seq = ["MYGNDLDTSVYGSGFPRIGDQRPESVEADIWDEYCGSPWNLNNMPKLKGSMLQAIRHNIN",
+               "GVTVPWLYLGMLFSSFCWHFEDHCFYSVNYLHWGEAKCWYGIPGSAASAFEKVMRKTLPD",
+               "LFDAQPDLLFQLVTMLSPTVLQENKVPVYTVLQEPGNFVITFPKSFHAGFNFGLNCAEAV",
+               "NFATADWLPYGGSGAELYRLYRKPSVISHEELLCVVAKGNCCNNEGSIHLKKELLRIYSK",
+               "EKTWREQLWKSGILRSSPMFVPECADSVGIEEDPTCIICQQFLHLSAIVCNCRPSVFACL",
+               "EHWKHLCECEPTKLRLEYRYTLAELDMMVQEVEKFGGCKTQETKISQRPSSGTKRSIALN",
+               "KKQEGMQVSQARPADKWLLRASKVLDAAFSSVEYATLLKESEQFLWAGSEMDRVRDVTKS",
+               "LNKAKIWAEAVSDCLSKVEGEVNDDSMKVHLEFIDELLRVNPVPCFNSGYLKLKDYAEEA",
+               "RKLSEKIDSALSSSPTITQLELLHSEVSRSPISLKKHEILSKKISSAKMLAKRAKRYLTD",
+               "AKPPGIEMDALFKLNSEMLELHVQLPETEGILDLVKKSESARDKSNKVLTGSLSLENVEE",
+               "LLHEFDSFSINVPELNILRQYHVDTLSWISRFNDVMVDVREGKDQRKLISDLSSLLRDGA",
+               "SLGIQVEGLPLVEVELKKASCREKARTVYTARKSLDFIEQLLSEAVILHIEEEEIFVEIS",
+               "GILSTARCWEERASTILENETQMYELKDLVRMSVNIDAVLPTLQGIENTISSAETWLQKS",
+               "EPFLSATSSMASSPCSMLELPVLKDLVTQAKLLNVQLQEPRILETLLLNCERWQCDNHQL",
+               "LQETEDLLDNAKIDDGTHSNILPKIMDLITRVDSARRSGLALGLNFDELPKLRTASLKLG",
+               "WCCKTITLSSSSPTSELLEDVGKPSLQHIQQHLKEGQTLEILPEEYYLGKRLMELKDTGL",
+               "EWAKRARKVVTDSGALALEDVFELISEGENLPVHAEQELQSLRARSMLHCICLKPYNSRS",
+               "MVSCSQCGEWYHTYCLKLHWRPKAYVCSACCPLAETTPQIDPARATEPERPSLNQRRTRM",
+               "VATDAAVNDLKWKTRKHIKRTTKRSPQVHILPWFFT"]
+        reviewed = "Unreviewed"
+        family = "ARID/BRIGHT"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT1G78635
+        gene = "At1g78635"
+        uniacc = "A0A178WKG1"
+        unientry = "A0A178WKG1_ARATH"
+        seq = ["MPLFVLSKSSAKKSQTFMSQEQQGTSPLNTDEALKSHHSFSQNPNYIESNLSRRYQTNFS",
+               "LGSQRISGQFLMIPNPGFVDTSSMTNTHDTSLANFQTVPTTTNPKIILKEEKENEEEQQY",
+               "WTIKKELTKSDACQRLTLSKSSVEEHILKHLLPEDSQKIDKGKPGITVKVYDNDTDTEHE",
+               "LCLAFQCSYVLKNGWVKTFVKRRGLEEGDMIGLFWECSTSKLHFSVLFRVNAKAPAAEEK",
+               "EAY"]
+        reviewed = "Unreviewed"
+        family = "B3"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT2G13985
+        gene = "At2g13985"
+        uniacc = "A0A1P8AY78"
+        unientry = "A0A1P8AY78_ARATH"
+        seq = ["MCGEMILIEEKGRSWTVDLKRKNSCPTTYIKRGWRSFCNANGFRAGSFFTFKLFQRGGTL",
+               "GLRLFHRELEEEAMPIECLSTEPDRNQNERSSQIWKDSSSPSQNRFVTIL"]
+        reviewed = "Unreviewed"
+        family = "B3"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT4G31685
+        gene = "At4g31685"
+        uniacc = "A0A1P8B795"
+        unientry = "A0A1P8B795_ARATH"
+        seq = ["MMLKVDSRGAVYIIGGNDWKSFCAANEVGAGESLALELIQGGVSPLLKFCSKMEQPSFKA",
+               "EDGRHKRARVQNRSQETDKGAETSRASTMGPKLEITEKGEPSRASTMRPKVEIREKIAET",
+               "GEPSRASNKSSGIEGNLQHTKPCSVKTDQLAKVKESVVDTLTSIGRFQAELETMKRKLED",
+               "SLQELN"]
+        reviewed = "Unreviewed"
+        family = "B3"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT5G01305
+        gene = "BHLH140"
+        uniacc = "Q9M041"
+        unientry = "BH140_ARATH"
+        seq = ["MDDFNLRSENPNSSSTTSSSSSSFHRHKSETGNTKRSRSTSTLSTDPQSVAARDRRHRIS",
+               "DRFKILQSMVPGGAKMDTVSMLDEAISYVKFLKAQIWYHQNMLLFINDHETTSSCTYSPG",
+               "AGEFGPKLFGYDDDYAPIMDTYSQGVPLTVADSKYTPWFGSVDDEQEHVTYFKYRRATRH",
+               "ALRGHCNCIIGETEEFADQREKMEVQIEESGKNQTSPESIEADKAKQIVVLLIGPPGSGK",
+               "STFCDTAMRSSHRPWSRICQDIVNNGKAGTKAQCLKMATDSLREGKSVFIDRCNLDREQR",
+               "SEFIKLGGPEFEVHAVVLELPAQVCISRSVKRTGHEGNLQGGRAAAVVNKMLQSKELPKV",
+               "NEGFSRIMFCYSDADVDNAVNMYNKLGPMDTLPSGCFGEKKLDTKSQPGIMKFFKKVSAL",
+               "PASSSNEATNTTRKADEMTANVRVSPVKLGSADIVPTLAFPSISTADFQFDLEKASDIIV",
+               "EKAEEFLSKLGTARLVLVDLSRGSKILSLVKAKASQKNIDSAKFFTFVGDITKLRSEGGL",
+               "HCNVIANATNWRLKPGGGGVNAAIFKAAGPDLETATRVRANTLLPGKAVVVPLPSTCPLH",
+               "NAEGITHVIHVLGPNMNPNRPDNLNNDYTKGCKTLREAYTSLFEGFLSVVQDQSKLPKRS",
+               "SQTAVSDSGEDIKEDSERNKKYKGSQDKAVTNNLESESLEDTRGSGKKMSKGWNTWALAL",
+               "HSIAMHPERHENVVLEYLDNIVVINDQYPKARKHVLVLARQESLDGLEDVRKENLQLLQE",
+               "MHNVGLKWVDRFQNEDASLIFRLGYHSVPSMRQLHLHVISQDFNSDSLKNKKHWNSFTTS",
+               "FFRDSVDVLEEVNSQGKANVASEDLLKGELRCNRCRSAHPNIPKLKSHVRSCHSQFPDHL",
+               "LQNNRLVARAET"]
+        reviewed = "Unreviewed"
+        family = "bHLH"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT1G35490
+        gene = "At1g35490"
+        uniacc = "C0SUZ3"
+        unientry = "C0SUZ3_ARATH"
+        seq = ["MENLRRLSNPGNFGFIGRSQSRVPQKNMENNISPPNNMHHHSASLDDLFTEDQPAWLDEL",
+               "LSEPASPKINKGHRRSASDTAAYLNSALMPSKENHVAGSSWQFQNYDLWQSNSYEQHNKL",
+               "GWDFSTANGTNIQRNMSCGALNMSSKPIEKHVSKMKEGTSTKPDGPRSKTDSKRIKHQNA",
+               "HRARLRRLEYISDLERTIQVLQVEGCEMSSAIHYLDQQLLMLSMENRALKQRMDSLAEIQ",
+               "KLKHVEQQLLEREIGNLQFRRHQQQPQQNQKQVQAIQNRYNKYQPPVTQEPDAQFAALAI"]
+        reviewed = "Unreviewed"
+        family = "bZIP"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT5G46010
+        gene = "At5g46010"
+        uniacc = "Q9FNM1"
+        unientry = "Q9FNM1_ARATH"
+        seq = ["MSSSSNKNSNKDHDDHHNDQGQHNTIHTPSFMHTFEISNISSPSSPVVSDPKPEWKPNQH",
+               "QAQILEELFIGGTVNPSLTSIKQITIKLQSYGEEVDDADVYKWFHNRKYSRKPKLVSYFM",
+               "FL"]
+        reviewed = "Unreviewed"
+        family = "Homeodomain"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT4G37435
+        gene = "At4g37435"
+        uniacc = "A0A1P8B5J4"
+        unientry = "A0A1P8B5J4_ARATH"
+        seq = ["MGRVKIQIKRINDRQQRNIAFAKRKNGLLKKAYELFVLCNVPVALILFSPSGKLFVFYAK",
+               "ERPEEIICKFLARAVRTRLPHEPNIQRLVMQMRSETKCSDESLDDGLRYLIQPKEIEDEI",
+               "EEVNARLAEVEKQLERFLEIPDQWESLAELKRREEDFQKTLDIVQSRKRDLKPGNFVSGI",
+               "KKFLRI"]
+        reviewed = "Unreviewed"
+        family = "MADS box"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT5G26865
+        gene = "F2P16.19"
+        uniacc = "O04632"
+        unientry = "O04632_ARATH"
+        seq = ["MREDTMFKKALELSTLCDIEVCVILYSRDGELIKTWPEDQSKVRDMAERFSKLHERERRK",
+               "KRTNLSLFLRKKILDNSKLSEKVLEMKDSLESGLRVLQDKLLLLQPEKNQTELGQIPVIN",
+               "NGQNHW"]
+        reviewed = "Unreviewed"
+        family = "MADS box"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT3G57980
+        gene = "T10K17.190"
+        uniacc = "Q9M2Q0"
+        unientry = "Q9M2Q0_ARATH"
+        seq = ["MEELLLACAVHRHGTDSWDSVASEVHKQNSTFRTLTAIDCRHKYNDLKRRFSRNLVSPGS",
+               "ADEETLAAEISSVPWLEELRKLRVDELRREVERYDLSISSLQLKVKTLEDEREKSLKTEN",
+               "SDLDRIAETKENHTESGNNSGVPVTELKNSPDPNDNSPGTGSENTNRAVKIAEPVDEEPN",
+               "RIGGEDNDEKPAREDSGRGSCESVAKESDRAEPKREGNDSPELVESMDESKGEEDTKETS",
+               "DGQSSASFPRKETVDQDQPDNKDQSLTVNKIFVESQPLSDFIEILQSHPIGSHFSRRLET",
+               "QETSDYYRIIRQHIDFEMIRSRVEEGYYKTARTKFFRDLLLLINNVRVFYGEPSPEFNAA",
+               "KQLYQLIKKQMSFKIPKQTLPPPKEDALVTSKEEVKVSSLKPTLSVPIIACRKRSSLAVR",
+               "SPASVTETLKKKTRVVPTVDEKQVSEEEEGRPSDKDEKPIVSKKMARGAAPSTAKKVGSR",
+               "NVKTSLNAGISNRGRSPNGSSVLKKSVQQKKGINTSGGSKKQSAASFLKRMKGVSSSETV",
+               "VETVKAESSNGKRGAEQRKSNSKSEKVDAVKLPAGQKRLTGKRPTIEKGSPTKKNSGVAS",
+               "KRGTASLMAKRDSETSEKETGSSTRPKKRSKR"]
+        reviewed = "Unreviewed"
+        family = "Myb/SANT"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT5G03780
+        gene = "TRFL10"
+        uniacc = "C0SVN2"
+        unientry = "C0SVN2_ARATH"
+        seq = ["MIEKKLSKMKMRTKSIPVRSSRKSLDSLLDDEANENTQCDERDVPHKKRRCLGTSETTDR",
+               "GGSVEPLLDLDACIVCEVSDERVSRCCGVDCLLSFHGECLYADLGSTSSSSSSSSEDVSN",
+               "PFCPYCWLKIVALKSKTLREKTVEAEKAVCKYLDKEMKSRDEDITLSGDEIGNQEQSTDI",
+               "VSDHELQGEKDGCSSKPDADQGKVGTGKVIDEVGASEKVATEKFQDAEDDETAKDQGTRI",
+               "LNTGAGKKREVSSFLSMQESFSAKEQDQVQQNEKRRRRGLKIIDSDISSKGSSNERNGED",
+               "VTEQVTSSVQVTSPSGRMRNQQATTKVVAKSKTVRDISFFKMDQRRRLLWTYEEEEMLKV",
+               "GVEKFAAEANKNMPWRKILEMGEKVFHETRTPADLKDKWRSMVKIMNKNEQGSTLTPTAM"]
+        reviewed = "Unreviewed"
+        family = "Myb/SANT"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT3G01600
+        gene = "NAC044"
+        uniacc = "F4J4R5"
+        unientry = "F4J4R5_ARATH"
+        seq = ["MARAWIVDGRGIAAKVKNASLSSALQIQDCGAHIKCPNCTYRIDNSNVLIPWPGLPKGVK",
+               "FEPTDEDIIEFLEAKCGIGGSEPHVLIEEFIRPVTEDVGINYTHPQNLPGANKDGVSVFF",
+               "FHKTVQAYGTGQRKRRKITPTLVNDEPVRWHKTGRTKPVMLSGVQRGCKKIMVLYKSARK",
+               "GTKPEKSNWVLHQYHLGTEGKEIGDYVVSKITYQQQKLGENPDEGESSSGVRGGPTTPKT",
+               "NTPTPPSLVDGVAGDEEAFDDLKMFDPFFEELDSIPEAALGKMWSKKARMDEEFVVNLSE",
+               "DNLICDESMEASSLWENQVLPNPSLGTVGDFDGFSISDLENADLGTPPDFLTLASQESLL",
+               "NWIGWL"]
+        reviewed = "Unreviewed"
+        family = "NAC/NAM"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT3G46565
+        gene = "At3g46565"
+        uniacc = "A0A1I9LRJ5"
+        unientry = "A0A1I9LRJ5_ARATH"
+        seq = ["MKDVYAKEPWLLDHSNNSFFKEDEWYYFSTRTQISEKKIGRGEITGDNNNGIGRGNWRVN",
+               "EKEYIIDKDIGDIIGIKKNLTDKSGN"]
+        reviewed = "Unreviewed"
+        family = "NAC/NAM"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # AT5G04395
+        gene = "At5g04395"
+        uniacc = "A0A1P8BGF2"
+        unientry = "A0A1P8BGF2_ARATH"
+        seq = ["MARDSKKAGGALPAPATAMGNAAAETSLPPGFRFHPSDEELISYYLKKKVQGKPMRYDEI",
+               "GEVDICKLEPWDLAVIIFLCFLALDFRYVLKTRDKEWFFFSALDKKTRTGTSMSRATKQG",
+               "YWKVTGTDGKIRQGGDGKVTIGTMKTLVFHRGRSPNGLGTDWVMNEYHLAKNDEGVPVRY",
+               "MFSTRSF"]
+        reviewed = "Unreviewed"
+        family = "NAC/NAM"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
     elif s == "Caenorhabditis_elegans":
-        # hlh-27
+        # HLH27
         gene = "hlh-27"
         uniacc = "Q18056"
         unientry = "Q18056_CAEEL"
@@ -268,12 +598,123 @@ for s in sorted(species):
                "RFILPSLQILTPETSDEEENEETVDISN"]
         reviewed = "Unreviewed"
         family = "bHLH"
-        jaspar_motifs = ""
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
     elif s == "Drosophila_melanogaster":
-        # br
+        # FBgn0000413
+        gene = "da"
+        uniacc = "P11420"
+        unientry = "DA_DROME"
+        seq = ["MATSDDEPMHLYEVFQNCFNKIANKQPTGTVGADRGGGGGYHSPYGSLGVENGMYPSDFN",
+               "SMHDTVNGGNNRYANASTVDQYFDSAAAGSGGAWCQPQMSSANSYMGQSAYQNSGPLSGH",
+               "SIDQQQQQVHQADGLGMGGGGGGGVGADGMHCPVTTGLPPISSFRPTSGGIGGPGAGQQA",
+               "PVNVNVNPPAVFNSPQAHNHNHTVQAQHSALSTAGPLGHHSLNHTPHAHSHTLPLPHALP",
+               "HGHTLPHPHHSQQNSPAVQSSDAFSGAGASVKVAGAGNSSAAALRQQMYMPADQSISSFG",
+               "SNPSTPVNSPPPLTQSVVGGGGEPSVSGGSGWGHSVLNGGPSSSYASEMVPVSSLHTMAS",
+               "VFQGVRMEERLDDALNVLRNHCEPEMLAGVNQSLASIDNIDALTSFVPNSPSHLGSGGNS",
+               "GSVSNTSNAALVHEVLALGAAAAAGTSGQSVGGAGSLASLKLDRSASTSLPKQTKKRKEH",
+               "TAISNSVPAGVSTTSSLTSLDISDTKPTSSIESSNSGLQQHSQGKGTKRPRRYCSSADED",
+               "DDAEPAVKAIREKERRQANNARERIRIRDINEALKELGRMCMTHLKSDKPQTKLGILNMA",
+               "VEVIMTLEQQVRERNLNPKAACLKRREEEKAEDGPKLSAQHHMIPQPQQVGGTPGSSYHS",
+               "QPAQLVPPSSQTISTMTISLPVNQANNGLPPHLQQQQQQQSQLGHAQLPQ"]
+        reviewed = "Reviewed"
+        family = "bHLH"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # FBgn0029173
+        gene = "prg"
+        uniacc = "Q9VLK8"
+        unientry = "Q9VLK8_DROME"
+        seq = ["MHTSDISMTQDQDVSTCRLCHHNTDPNSLNIFDDTVQFCKDVSIAEVSKSLWSVQYDRNE",
+               "CLSELICSRCLEILEEAFELRKGMQEREQSLQEQLKEMIKDHPKHRPGLNGNPGVFVPEE",
+               "GCIIVEVDPENLAESSEEEFALGSDGEYENYDDDDEEEEEDYDEEDEEDGQNGEDVDMPL",
+               "GMDAAQMAAQQSVANNANTTEARPKRAFLCQYCDLGFTLPAECQEHELAAHDPNAPYCCN",
+               "FCNIKLVTRPALISHIKTLHDPDRPYVCAHCRKGFVRRSDLKKHTIVHTGVRPFTCNVCS",
+               "KSFSRNTNLTKHMRIHSGVKPFVCQQCPRSFQTAVEMMRHTRSHGEVKAFQCGRCPYSFS",
+               "RRDKLIAHQQVHTRRDMEQQQQMGLIPPMEGDLQQQALQAKQKAAAQTKNSRYYHCDVCD",
+               "RTFQRERDLQRHQALHMDSLFACKTCNQGFNRREQLQRHELEAHGPSFTCGICCISFLHQ",
+               "IELENHLKVHQLQHKMAQRAQEAAILPLKMAEKAPVAMTAPLVQDPQLVRPSAAELSFYS",
+               "NMIPTMNLGFYSETRPEE"]
+        reviewed = "Unreviewed"
+        family = "C2H2 ZF"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # FBgn0261613
+        gene = "Oaz"
+        uniacc = "A1Z9R4"
+        unientry = "ZN423_DROME"
+        seq = ["MMALKMLYRGPSSRLENLIEKIQATKEITNNDMYSTHTSSSYSPSISDGTMTPNSHHLIG",
+               "APTAAGQEDHPTEGKINGGADGEDLPKPKRLPHFHHHHHHHYHHQQALKIANKLRKINKE",
+               "AKMGATAGGGATGAASKFDKLTGEGIKSRGDGSYQCQFCEKTFPRLGYLKHHVQSHAEHL",
+               "PFKCEYCSKLFKHKRSRDRHKKLHTNERNYKCPHCEAAFSRSDHLKIHMKTHDIQKPFQC",
+               "SMCNRGYNTAAALTSHMQKHKKNAAILAAGGNPNALNYSPRSTGSASASVSSNGSLQKRR",
+               "YALALASDSSPSRMDFPKRSRSNHVGGTTTTATPTPLLRCSYCPKVTEFSSLEQLNAHLQ",
+               "SVHEQPQTQAVKTPVQEGEGFQLSCEYCTMKFGNIAGLFQHMRSTHMDRLSSPNSYYEHF",
+               "NRLATAGTFSPRLALDLPKIKPDLGSPERESRPAEDDLPTDLSNNKRRPLTPNPQAQTPL",
+               "APPSAPPGVFFCNQCNAGLPDFESFRNHLKSHIAEGMQLVCPHCGMSLPEQSEFERHVVG",
+               "HFLITGSEFNCSSSCGKSFAKSEDLQQHLLSEHVLTLLKCSLCSELCESRMAMQLHLACA",
+               "HSQETKLLRCSACLELFRSDAEFHVHVKTRHQLGGHPTLGATSSAPTNPLQCMFCRAVCS",
+               "SELEMHFHLAAHARQFRCPSCPETFHVEFLLDRHMQSQHGGVKDKEANSPNMGSLYVNAL",
+               "LPPLAAAAAAAAATNNNSSIIDYNVAFKGLFGGASGGAGSGGGGAQSGGAPPSANKFYSP",
+               "LQVDTNALKAQTSPHPALMYGLSQRYLMEMYAAKSTSPSGNEGVGNSQPPAPQATAPPPP",
+               "PNASTATFSCGMCERQDLRSEAELHSHRKLAHNLKTGVSLRCAYCAGNFKSRAELEQHMK",
+               "SCHNSTGKHKCLICDEVFPSPAILAEHKLQHSKVGQSGKCSHCGQPLEDVAAFRAHLSEH",
+               "GSDGASLPLACICCRQTLHSEFELSLHAKFHTKSSSSGGSLQEPVCALCLEPLPDATEGP",
+               "AKLCDKCCRKHNLNGKRGKHSEPATSLPAPPSAFVENRCNLCKMILPHAQKLQEHLVEHT",
+               "FAGTEQRGFNCYICSAVFTAPGGLLNHMGEHGAHSRPYDCNLCPEKFFFRAELEHHQRGH",
+               "ELRPQARPPAAKVEVPSIRNTSPGQSPVRSPTIVKQELYETDTVESAGVEDEPENHPDEE",
+               "EYIEVEQMPHETRPSGIGSQLERSTSSA"]
+        reviewed = "Reviewed"
+        family = "C2H2 ZF"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # FBgn0022720
+        gene = "zf30C"
+        uniacc = "Q9VL91"
+        unientry = "Q9VL91_DROME"
+        seq = ["METESMAPSSSAAAAATKLLVEITTDGIPKLHCPVCNKALVSLAGYVKHVKKHQPPGGFE",
+               "CRHCDARFCHEEELTQHAKDEHGVTGAVAGQERKPFVCEKCGAEYKYQEAYRRHCRTKCG",
+               "EEKLPREESRPMECKCCYTRFSSASNLSKHRRSRPDTCGQPEYDSPGSSDGMKKHKAFRK",
+               "KDRNRDSDDEDTTSEESEDSDDDIPLASRLKTKLKQESQNSDSGDECPDFEPNNSEDDAD",
+               "ASGFQLPPPAMVKVEAFDEEDFEYQDASMYVKTESTDIFSNEKDKLLDVLLNEGDGLKPF",
+               "ESLKVEQGAGILDEIAAVPLVEVAEEDVLELRGHQMEKPPGPRKRGRPPKEKIPVVKRKY",
+               "RKRNAPRSPSPDDSSGTPKRVAKISKKELKERLKMINKMEKSWKCPHCVKIYHIRKPYEK",
+               "HLRDDHKLNEAEMKEIFKDVDVHAKLDEEVFKCPICSKIYLVEKRLVTHMKVHGEDGKLT",
+               "FKCPCYCNLFFATKEQATEHARAQHKELLYCEKCDKYMTGHDSLKNHERNFHSKKEPRSQ",
+               "QRNLICDKCGKKFTGRTSLSDHVRSDCGRLPLYGCSVCGKHLSTAGILKTHMLLHKADTP",
+               "YQCDKCGKTFKVKAQYKSHLKTRHTDYKPYKCHLCPKEYPYRESLLTHMTVHTGIKRFLC",
+               "NNCGKRFTCISNLQAHRKVHADTCGQLPLNAKATQYMGVQRGKLLMGAKPEAGMEYEETK",
+               "TLIAQDVIDRDMPMAQELNFPSDGSAPLATVPLNYASTHLVPHIVLQTMQAEARRME"]
+        reviewed = "Unreviewed"
+        family = "C2H2 ZF"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # BRC1_DROME
         gene = "br"
         uniacc = "Q01295"
         unientry = "BRC1_DROME"
@@ -292,12 +733,182 @@ for s in sorted(species):
                "LNHHSSS"]
         reviewed = "Reviewed"
         family = "C2H2 ZF"
-        jaspar_motifs = "MA0010.1;MA0011.1;MA0012.1"
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # FBgn0028993
+        gene = "scro"
+        uniacc = "Q9NCG1"
+        unientry = "Q9NCG1_DROME"
+        seq = ["NLSSIHHLQNLHSQHQSTLFNSNHSTPFSVTDILSPIEESYRKLELNGNPPSPFRSNSSS",
+               "SSINSPGTLTTSTMANPYAMGTLYHSPGVQTYCGPTDNLSLAGHYTDMRNSASWYGSTAN",
+               "DPRFAISRLMSSSASGTMSHMGNMSGLAACSVSDSKPLQFPLAQRRKRRVLFTQAQVYEL",
+               "ERRFKQQRYLSAPEREHLASLIHLTPTQVKIWFQNHRYKCKRQAKRKAMAEQNQHNQPAS",
+               "SPRRVAVPVLVKDGKPCSGNNSSSQSQQHGTNSTSAGNNTGSANNGNANSGIVSVTANVS",
+               "GGLNLITGDAPNSHSPDTSSSLLASYGTVGGSNVAMLQQPCNNTLMSNSLAMAYRNQNNF",
+               "IFNGHQQQCGGYLPLQGRAW"]
+        reviewed = "Unreviewed"
+        family = "Homeodomain"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # FBgn0005630
+        gene = "lola"
+        uniacc = "P42283"
+        unientry = "LOLA1_DROME"
+        seq = ["MDDDQQFCLRWNNHQSTLISVFDTLLENETLVDCTLAAEGKFLKAHKVVLSACSPYFATL",
+               "LQEQYDKHPIFILKDVKYQELRAMMDYMYRGEVNISQDQLAALLKAAESLQIKGLSDNRT",
+               "GGGVAPKPESSGHHRGGKLSGAYTLEQTKRARLATGGAMDTSGDVSGSREGSSSPSRRRR",
+               "KVRRRSMENDAHDNSNSSVLQAAASNQSILQQTGAGLAVSALVTTQLSSGPAAGTSSQAS",
+               "STQQQQPLTSTNVTKKTESAKLTSSTAAPASGASASAAVQQAHLHQQQAQTTSDAINTEN",
+               "VQAQSQGGAQGVQGDDEDIDEGSAVGGPNSATGPNPASASASAVHAGVVVKQLASVVDKS",
+               "SSNHKHKIKDNSVSSVGSEMVIEPKAEYDDDAHDENVEDLTLDEEDMTMEELDQTAGTSQ",
+               "GGEGSSQTYATWQHDRSQDELGLMAQDAQQRDPQDLSRKENTAPDVASTAEIQRSFQRSI",
+               "LNGKQRDEQKIQLPGSRRKRLSVTEVSDMLFEFYKTKSAKVPKAEQPHRQVSPTSGEILD",
+               "PSTISAIAVYGTASETASKNLNADEVMRVQNATATRVVGAAAGAAASFHPRPKYTLKTAA",
+               "SSTEHTTAIPTSVLVANSAAALTPKPQAAVIAEALMRNGLHNFQQQLRAQEILRQQTPHR",
+               "RIKEENDVEIAGGDITPTKILENLLRKQQERDLRHSECENEPGYSTEDDEEGRYHAFDDI",
+               "HLMEQSGGKFGNNSGMGMFNANAHGGSASSILDAHQAFRNLEFTLSDYGGSSSNGSTTSP",
+               "NGIGLDGEPVYECRHCGKKYRWKSTLRRHENVECGGKEPSHQCPYCPYKSKQRGNLGVHV",
+               "RKHHTDLPQLPSKRRSKYSMNRENGMSGSMSDDSQGKLIIDFNGKGELETK"]
+        reviewed = "Reviewed"
+        family = "C2H2 ZF"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # FBgn0011764
+        gene = "Dsp1"
+        uniacc = "Q24537"
+        unientry = "HMG2_DROME"
+        seq = ["MEHFHQIQQTIQHYQQQLAAQQQQQVQQQQLQQHQVVVQQNQQQAHQNSSNTTAGVGTQQ",
+               "LFTYKMASSFPNPATTMAQVVATSNAAGTTGYDYRLNMAQAAAAAAVPGSQWWYSAANQG",
+               "QVDANTAAQLQHQQQQQQQQQQQQQQQHQQQQQMQQQQQQQNVINSASPMSRVKADAKPR",
+               "GRMTAYAYFVQTCREEHKKKHPDETVIFAEFSRKCAERWKTMVDKEKKRFHEMAEKDKQR",
+               "YEAEMQNYVPPKGAVVGRGKKRKQIKDPNAPKRSLSAFFWFCNDERNKVKALNPEFGVGD",
+               "IAKELGRKWSDVDPEVKQKYESMAERDKARYEREMTEYKTSGKIAMSAPSMQASMQAQAQ",
+               "KAALLAAAAQQQHQQLEEQHDDDDGDGDDDENQ"]
+        reviewed = "Reviewed"
+        family = "Sox"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # FBgn0000099
+        gene = "ap"
+        uniacc = "P29673"
+        unientry = "APTE_DROME"
+        seq = ["MGVCTEERPVMHWQQSARFLGPGAREKSPTPPVAHQGSNQCGSAAGANNNHPLFRACSSS",
+               "SCPDICDHSTKPFGNAYGTESFRSYETADRATFEDSAAKFSISRSRTDCTEVSDETTSGI",
+               "SFKTEPFGPPSSPESTSDSKITRNLDDCSGCGRQIQDRFYLSAVEKRWHASCLQCYACRQ",
+               "PLERESSCYSRDGNIYCKNDYYSFFGTRRCSRCLASISSNELVMRARNLVFHVNCFCCTV",
+               "CHTPLTKGDQYGIIDALIYCRTHYSIAREGDTASSSMSATYPYSAQFGSPHNDSSSPHSD",
+               "PSRSIVPTGIFVPASHVINGLPQPARQKGRPRKRKPKDIEAFTANIDLNTEYVDFGRGSH",
+               "LSSSSRTKRMRTSFKHHQLRTMKSYFAINHNPDAKDLKQLSQKTGLPKRVLQVWFQNARA",
+               "KWRRMMMKQDGSGLLEKGEGALDLDSISVHSPTSFILGGPNSTPPLNLD"]
+        reviewed = "Reviewed"
+        family = "Homeodomain"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # FBgn0000054
+        gene = "Adf1"
+        uniacc = "P05552"
+        unientry = "ADF1_DROME"
+        seq = ["MHTLTAAIEMDKLDANLEQQFDLNLIEAVKLNPVIYDRSHYNYKHFVRKAQTWKQIAETL",
+               "GVPEQKCTKRWKSLRDKFAREMKLCQESRWRYFKQMQFLVDSIRQYRESLLGKCANGSQS",
+               "ANQVADPSQQQQAQQQTVVDIFAQPFNGSATTSAQALTHPHEITVTSDAQLATAVGKDQK",
+               "PYFYEPPLKRERSEEEHSDNMLNTIKIFQNNVSQAVSAEDQSFGMVVTDMLNTLGVRQKA",
+               "EAKVHIIKYLTDMQLLAQHNKY"]
+        reviewed = "Reviewed"
+        family = "MADF"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # FBgn0037645
+        gene = "ich"
+        uniacc = "Q9VHJ6"
+        unientry = "ICH_DROME"
+        seq = ["MKFCSMNGPSESEVESLLMSPCWGPPQTSAQDQYLLDGHKLLLEHDLDSLPSDADQKNSL",
+               "DVLDNLLLNGSSLNALSDLKPLPPFTGYTGHLSINGISGHHYHAIAQRLPDESNNNYMQS",
+               "AYHPQNQSNPTSTTQSNGGSNSNSNNSNEHNIVSSSTCLPESVLSGSGGGGGGNDACLAD",
+               "VKLFADSQLDSKLYSVADSCVMNGSGSGSAANGNGSGPSIATLTPIDQVADSLHNSGVRI",
+               "YKDLTEYVDMNSIDDIAAIIGSAIADTTVPNQLDKDDNNDTRDSWMDLDAWIDGNCIQQE",
+               "SAKVLVSQQDSLGDFILPHSPLPMHASSSTLQSLLSHGYMPLLQNRLQNGPPNGNSSGGG",
+               "GGANQGAGIKGDPQAPTSTSYCNELAAATSSSCSPPGSVVSTTDNPNGLMINPRYLSNPT",
+               "NNQATGNLHQQGGYSMQASGLSLKDNGLCSPDLLGNYPHTTTASTTGSEMRTGAPKAKRS",
+               "RSQKKSNQQQQQQQQQQQQQGDGGGQPTTPQMSAISPSGFSASDLSGLLGKEKPVHRCSI",
+               "CNRGFLNKSNIKVHLRTHTGEKPFRCDVCAKAFRQKAHLLKHQQIHKRIGRD"]
+        reviewed = "Reviewed"
+        family = "C2H2 ZF"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
     elif s == "Homo_sapiens":
-        # DUX1
+        # ENSG00000214189
+        gene = "ZNF788P"
+        uniacc = "Q6ZQV5"
+        unientry = "ZN788_HUMAN"
+        seq = ["MRNMIPQDNENPPQQGEANQNDSVAFEDVAVNFTPDEWALLDPSQKNLYREVMQETLRNL",
+               "ASIEVLWKRDSLKVKVISMEKF"]
+        reviewed = "Reviewed"
+        family = "C2H2 ZF"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # ENSG00000249459
+        gene = "ZNF286B"
+        uniacc = "P0CG31"
+        unientry = "Z286B_HUMAN"
+        seq = ["METDLAEMPEKGVLSSQDSPHFQEKSTEEGEVAALRLTARSQAAAAAAAPGSRSLRGVHV",
+               "PPPLHPAPAREEIKSTCSLKACFSLSLTLTYYRTAFLLSTENEGNLHFQCPSDVETRPQS",
+               "KDSTSVQDFSKAESCKVAIIDRLTRNSVYDSNLEAALECENWLEKQQGNQERHLREMFTH",
+               "MNSLSEETDHEHDVYWKSFNQKSVLITEDRVPKGSYAFHTLEKSLKQKSNLMKKQRTYKE",
+               "KKPHKCNDCGELFTCHSVHIQHQRVHTGEKPYTCNECGKSFSHRANLTKHQRTHTRILFE",
+               "CRECKKTFTESSSLATHQRIHVGERPYECNECGKGFNRSTHLVQHQLIHTGVRPYECNEC",
+               "DKAFIHSSALIKHQRTHTGEKPYKCQECGKAFSHCSSLTKHQRVHTGEKPYECSECGKTF",
+               "SQSTHLVQHQRIHTGEKPYECSECGKTFSQSSNFAKHQRIHIGKKPYKCSECGKAFIHSS",
+               "ALIQHQRTHTGEKPFRCNECGKSFKCSSSLIRHQRVHTEEQP"]
+        reviewed = "Reviewed"
+        family = "C2H2 ZF"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # DUX1_HUMAN
         gene = "DUX1"
         uniacc = "O43812"
         unientry = "DUX1_HUMAN"
@@ -306,11 +917,14 @@ for s in sorted(species):
                "IAAREELARETGLPESRIQIWFQNRRARHRGQSGRAPTQASIRCNAAPIG"]
         reviewed = "Reviewed"
         family = "Homeodomain"
-        jaspar_motifs = ""
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
-        # DUX3
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # DUX3_HUMAN
         gene = "DUX3"
         uniacc = "Q96PT4"
         unientry = "DUX3_HUMAN"
@@ -320,12 +934,64 @@ for s in sorted(species):
                "GRAPTQASIRCNAAPIG"]
         reviewed = "Reviewed"
         family = "Homeodomain"
-        jaspar_motifs = ""
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # ENSG00000250709
+        gene = "SOHLH2"
+        uniacc = "Q9NX45"
+        unientry = "SOLH2_HUMAN"
+        seq = ["MASSIICQEHCQISGQAKIDILLVGDVTVGYLADTVQKLFANIAEVTITISDTKEAAALL",
+               "DDCIFNMVLLKVPSSLSAEELEAIKLIRFGKKKNTHSLFVFIIPENFKGCISGHGMDIAL",
+               "TEPLTMEKMSNVVKYWTTCPSNTVKTENATGPEELGLPLQRSYSEHLGYFPTDLFACSES",
+               "LRNGNGLELNASLSEFEKNKKISLLHSSKEKLRRERIKYCCEQLRTLLPYVKGRKNDAAS",
+               "VLEATVDYVKYIREKISPAVMAQITEALQSNMRFCKKQQTPIELSLPGTVMAQRENSVMS",
+               "TYSPERGLQFLTNTCWNGCSTPDAESSLDEAVRVPSSSASENAIGDPYKTHISSAALSLN",
+               "SLHTVRYYSKVTPSYDATAVTNQNISIHLPSAMPPVSKLLPRHCTSGLGQTCTTHPNCLQ",
+               "QFWAY"]
+        reviewed = "Reviewed"
+        family = "bHLH"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # ENSG00000233608
+        gene = "TWIST2"
+        uniacc = "Q8WVJ9"
+        unientry = "TWST2_HUMAN"
+        seq = ["MEEGSSSPVSPVDSLGTSEEELERQPKRFGRKRRYSKKSSEDGSPTPGKRGKKGSPSAQS",
+               "FEELQSQRILANVRERQRTQSLNEAFAALRKIIPTLPSDKLSKIQTLKLAARYIDFLYQV",
+               "LQSDEMDNKMTSCSYVAHERLSYAFSVWRMEGAWSMSASH"]
+        reviewed = "Reviewed"
+        family = "bHLH"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
     elif s == "Mus_musculus":
-        # Dux4
+        # BAE29047.1
+        gene = "Cebpd"
+        uniacc = "Q3UE64"
+        unientry = "Q3UE64_MOUSE"
+        seq = ["SPGPSLAPGTVREKGAGKRGPDRGSPEYRQRRERNNIAVRKSRDKAKRRNQEMQQKLVEL",
+               "SAENEKLHQRVEQLTRDLAGLRQFFKKLPSPPFLPPTGADCR"]
+        reviewed = "Unreviewed"
+        family = "bZIP"
+        jaspar_motifs = ""
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # A1JVI6_MOUSE
         gene = "Dux4"
         uniacc = "A1JVI6"
         unientry = "A1JVI6_MOUSE"
@@ -344,22 +1010,25 @@ for s in sorted(species):
         reviewed = "Unreviewed"
         family = "Homeodomain"
         jaspar_motifs = ""
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
-        # Cebpd
-        gene = "Cebpd"
-        uniacc = "Q3UE64"
-        unientry = "Q3UE64_MOUSE"
-        seq = ["SPGPSLAPGTVREKGAGKRGPDRGSPEYRQRRERNNIAVRKSRDKAKRRNQEMQQKLVEL",
-               "SAENEKLHQRVEQLTRDLAGLRQFFKKLPSPPFLPPTGADCR"]
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # ENSMUSG00000073448
+        gene = "mszf57"
+        uniacc = "O88255"
+        unientry = "O88255_MOUSE"
+        seq = ["EKPYKCKECGKSFRQTSVLKSHQKMHTGEKPYKCKQCDKSFAHSSSFRTHQKIHTSEEHC",
+               "SCPECGREFHQLSHLRKHYRLHTGE"]
         reviewed = "Unreviewed"
-        family = "bZIP"
-        jaspar_motifs = ""
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
-        # Zfp263
+        family = "C2H2 ZF"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))     
+        # Q8K439_MOUSE
         gene = "Zfp263"
         uniacc = "Q8K439"
         unientry = "Q8K439_MOUSE"
@@ -377,37 +1046,15 @@ for s in sorted(species):
                "CGESFSRSSRLTSHQRTHTG"]
         reviewed = "Unreviewed"
         family = "C2H2 ZF"
-        jaspar_motifs = ""
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
     elif s == "Saccharomyces_cerevisiae":
-        # ARG5,6
-        gene = "ARG5,6"
-        uniacc = "Q01217"
-        unientry = "ARG56_YEAST"
-        seq = ["MPSASLLVSTKRLNASKFQKFVSSLNKSTIAGFASVPLRAPPSVAFTRKKVGYSKRYVSS",
-               "TNGFSATRSTVIQLLNNISTKREVEQYLKYFTSVSQQQFAVIKVGGAIISDNLHELASCL",
-               "AFLYHVGLYPIVLHGTGPQVNGRLEAQGIEPDYIDGIRITDEHTMAVVRKCFLEQNLKLV",
-               "TALEQLGVRARPITSGVFTADYLDKDKYKLVGNIKSVTKEPIEASIKAGALPILTSLAET",
-               "ASGQMLNVNADVAAGELARVFEPLKIVYLNEKGGIINGSTGEKISMINLDEEYDDLMKQS",
-               "WVKYGTKLKIREIKELLDYLPRSSSVAIINVQDLQKELFTDSGAGTMIRRGYKLVKRSSI",
-               "GEFPSADALRKALQRDAGISSGKESVASYLRYLENSDFVSYADEPLEAVAIVKKDTNVPT",
-               "LDKFVCSDAAWLNNVTDNVFNVLRRDFPALQWVVSENDANIAWHFDKSQGSYLKGGKVLF",
-               "WYGIDDINTISELVENFVKSCDTASTLNSSASSGVFANKKSARSYSTRSTPRPEGVNTNP",
-               "GRVALIGARGYTGKNLVSLINGHPYLEVAHVSSRELKGQKLQDYTKSEIIYESLQIQDIR",
-               "KLEEQNAVDFWVMALPNKVCEPFVETIQSVHGKSKIIDLSADHRFVSESDWAYGLPELND",
-               "RAKIANAAKIANPGCYATGSQLTISPLTKYINGLPTVFGVSGYSGAGTKPSPKNDPKFLN",
-               "NNLIPYALSDHIHEREISARIGHNVAFMPHVGQWFQGISLTVSIPIKKGSLSIDEIRKLY",
-               "RNFYEDEKLVHVIDDIPLVKDIEGTHGVVIGGFKLNDAEDRVVVCATIDNLLKGAATQCL",
-               "QNINLAMGYGEYAGIPENKIIGV"]
-        reviewed = "Reviewed"
-        family = "Unknown"
-        jaspar_motifs = ""
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
-        # MAL63
+        # MAL63_YEASX
         gene = "MAL63"
         uniacc = "P10508"
         unientry = "MAL63_YEASX"
@@ -421,10 +1068,57 @@ for s in sorted(species):
                "LYDVSKFVFSLKHCNNKMFDRFSTKCQGALITLPISKPLQLNDNSKDEDDIIP"]
         reviewed = "Reviewed"
         family = "Zinc cluster"
-        jaspar_motifs = ""
-        lines.append("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
-                     gene, ss, uniacc, unientry, ";".join(seq), reviewed,
-                     family, jaspar_motifs))
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # YML007W
+        gene = "YAP1"
+        uniacc = "P19880"
+        unientry = "AP1_YEAST"
+        seq = ["MSVSTAKRSLDVVSPGSLAEFEGSKSRHDEIENEHRRTGTRDGEDSEQPKKKGSKTSKKQ",
+               "DLDPETKQKRTAQNRAAQRAFRERKERKMKELEKKVQSLESIQQQNEVEATFLRDQLITL",
+               "VNELKKYRPETRNDSKVLEYLARRDPNLHFSKNNVNHSNSEPIDTPNDDIQENVKQKMNF",
+               "TFQYPLDNDNDNDNSKNVGKQLPSPNDPSHSAPMPINQTQKKLSDATDSSSATLDSLSNS",
+               "NDVLNNTPNSSTSMDWLDNVIYTNRFVSGDDGSNSKTKNLDSNMFSNDFNFENQFDEQVS",
+               "EFCSKMNQVCGTRQCPIPKKPISALDKEVFASSSILSSNSPALTNTWESHSNITDNTPAN",
+               "VIATDATKYENSFSGFGRLGFDMSANHYVVNDNSTGSTDSTGSTGNKNKKNNNNSDDVLP",
+               "FISESPFDMNQVTNFFSPGSTGIGNNAASNTNPSLLQSSKEDIPFINANLAFPDDNSTNI",
+               "QLQPFSESQSQNKFDYDMFFRDSSKEGNNLFGEFLEDDDDDKKAANMSDDESSLIKNQLI",
+               "NEEPELPKQYLQSVPGNESEISQKNGSSLQNADKINNGNDNDNDNDVVPSKEGSLLRCSE",
+               "IWDRITTHPKYSDIDVDGLCSELMAKAKCSERGVVINAEDVQLALNKHMN"]
+        reviewed = "Reviewed"
+        family = "bZIP"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
+        # YDR423C
+        gene = "CAD1"
+        uniacc = "P24813"
+        unientry = "AP2_YEAST"
+        seq = ["MGNILRKGQQIYLAGDMKKQMLLNKDGTPKRKVGRPGRKRIDSEAKSRRTAQNRAAQRAF",
+               "RDRKEAKMKSLQERVELLEQKDAQNKTTTDFLLCSLKSLLSEITKYRAKNSDDERILAFL",
+               "DDLQEQQKRENEKGTSTAVSKAAKELPSPNSDENMTVNTSIEVQPHTQENEKVMWNIGSW",
+               "NAPSLTNSWDSPPGNRTGAVTIGDESINGSEMPDFSLDLVSNDRQTGLEALDYDIHNYFP",
+               "QHSERLTAEKIDTSACQCEIDQKYLPYETEDDTLFPSVLPLAVGSQCNNICNRKCIGTKP",
+               "CSNKEIKCDLITSHLLNQKSLASVLPVAASHTKTIRTQSEAIEHISSAISNGKASCYHIL",
+               "EEISSLPKYSSLDIDDLCSELIIKAKCTDDCKIVVKARDLQSALVRQLL"]
+        reviewed = "Reviewed"
+        family = "bZIP"
+        jaspar_motifs = set()
+        if uniacc in jaspar2uniprot:
+            for jaspar_motif in jaspar2uniprot[uniacc][0]:
+                jaspar_motifs.add(jaspar_motif)
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+                  gene, ss, uniacc, unientry, "".join(seq), reviewed,
+                  family, ";".join(sorted(jaspar_motifs))))
 
     # For each line...
     for line in sorted(lines):
