@@ -108,8 +108,6 @@ species = {
     "Saccharomyces_cerevisiae": "fungi"
 }
 
-# print("Name\tSpecies\tUniAcc\tUniEntry\tSequence\tStatus\tFamily\tJASPAR")
-
 for s in sorted(species):
 
     # Initialize
