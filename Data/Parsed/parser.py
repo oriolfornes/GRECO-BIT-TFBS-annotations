@@ -1,5 +1,5 @@
 import argparse
-import coreapi
+# import coreapi
 import json
 import os
 import re
@@ -11,7 +11,7 @@ root_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),
 
 # Append JASPAR-profile-inference to path
 jaspar_dir = os.path.join(root_dir, "JASPAR-profile-inference")
-sys.path.insert(0, os.path.realpath(jaspar_dir))
+sys.path.insert(1, os.path.realpath(jaspar_dir))
 
 # Import from JASPAR-profile-inference
 from __init__ import Jglobals
@@ -28,8 +28,16 @@ class CISBP(object):
         self.name = name
         self.species = species
         self.geneid = geneid
-        self.family = family
+        self._family = family
         self.evidence = evidence
+
+    @property
+    def family(self):
+
+        if self._family == "AP-2":
+            return("AP2")
+
+        return(self._family)
 
     def __str__(self):
 
@@ -132,7 +140,7 @@ for s in sorted(species):
 
     # For each SeqRecord...
     fas = {}
-    fas_file = os.path.join(root_dir, "Data", "Databases", "Uniprot",
+    fas_file = os.path.join(root_dir, "Data", "Databases", "UniProt",
                             "%s_TFs.fa.gz" % s)
     for seq_record in Jglobals.parse_fasta_file(fas_file):
         m = re.search("^\S+\|(\S+)\|(\S+) .+ OX=\d+ GN=(.+) PE=\d+ ",
@@ -143,7 +151,7 @@ for s in sorted(species):
 
     # For each line...
     txt = {}
-    txt_file = os.path.join(root_dir, "Data", "Databases", "Uniprot",
+    txt_file = os.path.join(root_dir, "Data", "Databases", "UniProt",
                             "%s_TFs.txt.gz" % s)
     for line in Jglobals.parse_file(txt_file):
         if line.startswith("//"):
@@ -192,7 +200,7 @@ for s in sorted(species):
     lines = set()
 
     # For each CIS-BP object...
-    for cisbp in sorted(tfs):
+    for cisbp in sorted(tfs, key=lambda x: x.geneid):
 
         if cisbp.geneid not in txt:
             continue
