@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import argparse
 # import coreapi
 import json
@@ -160,12 +162,13 @@ for s in sorted(species):
                     txt.setdefault(gene, {})
                     txt[gene].setdefault(reviewed, [])
                     # txt[gene][reviewed].append((uniaccs, unientry, orthodb))
-                    txt[gene][reviewed].append((uniaccs, unientry))
+                    txt[gene][reviewed].append((uniaccs, unientry, geneid))
         if line.startswith("ID"):
             m = re.search("^ID\s+(\S+)\s+(Reviewed|Unreviewed);", line)
             unientry = m.group(1)
             reviewed = m.group(2)
             uniaccs = []
+            geneid = ""
             genes = set()
             # orthodb = set()
         if line.startswith("AC"):
@@ -176,6 +179,10 @@ for s in sorted(species):
                 if m:
                     genes.add(m.group(1))
         if line.startswith("DR"):
+            m = re.search("^DR\s+GeneID; (\d+); -.", line)
+            if m:
+                geneid = m.group(1)
+                continue
             if species[s] == "insects":
                 m = re.search("^DR\s+FlyBase; (\S+); \S+.", line)
                 if m:
@@ -208,13 +215,15 @@ for s in sorted(species):
         # Initialize
         uniaccs = []
         unientries = []
+        geneids = set()
         family = cisbp.family
         sequences = []
         jaspar_motifs = set()
         for reviewed in ["Reviewed", "Unreviewed"]:
             if reviewed not in txt[cisbp.geneid]:
                 continue
-            for uaccs, uentry in txt[cisbp.geneid][reviewed]:
+            for uaccs, uentry , geneid in txt[cisbp.geneid][reviewed]:
+                geneids.add(geneid)
                 for uniacc in uaccs:
                     if uniacc in jaspar2uniprot:
                         for jaspar_motif in jaspar2uniprot[uniacc][0]:
@@ -223,10 +232,12 @@ for s in sorted(species):
                     uniaccs.append(fas[uentry][0])
                     unientries.append(uentry)
                     sequences.append(fas[uentry][2])
+
             break
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
                   fas[uentry][1], ss, ";".join(uniaccs), ";".join(unientries),
-                  ";".join(sequences), reviewed, family, ";".join(sorted(jaspar_motifs))))
+                  ";".join(sorted(map(str, geneids))), ";".join(sequences),
+                  reviewed, family, ";".join(sorted(jaspar_motifs))))
 
     # Fix species-specific cases
     if s == "Arabidopsis_thaliana":
@@ -246,7 +257,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT5G14340
@@ -264,7 +275,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT4G04555
@@ -279,7 +290,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT4G04605
@@ -296,7 +307,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AtMYB84
@@ -315,7 +326,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT1G63490
@@ -347,7 +358,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT1G78635
@@ -365,7 +376,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT2G13985
@@ -380,7 +391,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT4G31685
@@ -397,7 +408,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT5G01305
@@ -426,7 +437,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT1G35490
@@ -444,7 +455,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT5G46010
@@ -460,7 +471,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT4G37435
@@ -477,7 +488,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT5G26865
@@ -493,7 +504,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT3G57980
@@ -517,7 +528,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT5G03780
@@ -537,7 +548,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT3G01600
@@ -557,7 +568,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT3G46565
@@ -572,7 +583,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # AT5G04395
@@ -589,7 +600,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
     elif s == "Caenorhabditis_elegans":
@@ -608,7 +619,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
     elif s == "Drosophila_melanogaster":
@@ -634,7 +645,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # FBgn0029173
@@ -657,7 +668,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # FBgn0261613
@@ -691,7 +702,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # FBgn0022720
@@ -717,7 +728,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # BRC1_DROME
@@ -743,7 +754,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # FBgn0028993
@@ -763,7 +774,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # FBgn0005630
@@ -791,7 +802,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # FBgn0011764
@@ -811,7 +822,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # FBgn0000099
@@ -832,7 +843,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # FBgn0000054
@@ -850,7 +861,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # FBgn0037645
@@ -873,7 +884,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
     elif s == "Homo_sapiens":
@@ -889,7 +900,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # ENSG00000249459
@@ -911,7 +922,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # DUX1_HUMAN
@@ -927,7 +938,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # DUX3_HUMAN
@@ -944,7 +955,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # ENSG00000250709
@@ -965,7 +976,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # ENSG00000233608
@@ -981,7 +992,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
     elif s == "Mus_musculus":
@@ -994,7 +1005,7 @@ for s in sorted(species):
         reviewed = "Unreviewed"
         family = "bZIP"
         jaspar_motifs = ""
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # A1JVI6_MOUSE
@@ -1016,7 +1027,7 @@ for s in sorted(species):
         reviewed = "Unreviewed"
         family = "Homeodomain"
         jaspar_motifs = ""
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # ENSMUSG00000073448
@@ -1031,7 +1042,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))     
         # Q8K439_MOUSE
@@ -1056,7 +1067,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
     elif s == "Saccharomyces_cerevisiae":
@@ -1078,7 +1089,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # YML007W
@@ -1102,7 +1113,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
         # YDR423C
@@ -1122,7 +1133,7 @@ for s in sorted(species):
         if uniacc in jaspar2uniprot:
             for jaspar_motif in jaspar2uniprot[uniacc][0]:
                 jaspar_motifs.add(jaspar_motif)
-        lines.add("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (\
+        lines.add("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s" % (\
                   gene, ss, uniacc, unientry, "".join(seq), reviewed,
                   family, ";".join(sorted(jaspar_motifs))))
 
